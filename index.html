@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="img/diary.png" />
     <title>Custom Meal Planner</title>
+    <script type="module" src="/src/controllers/personInfo.js"></script>
   </head>
   <body>
     <h1>Create a meal plan in 3 simple steps!</h1>
 
     <!-- Using the Harris-Benedict formula -->
-    <form action="">
+    <form id="person-info" action="">
       <div>
         <button type="button">Imperial</button>
         <button type="button">Metric</button>
@@ -19,22 +20,34 @@
 
       <div>
         <label for="age">Age</label>
-        <input type="text" id="age" />
+        <input required type="text" id="age" name="age" />
       </div>
 
       <div>
         <label for="height">Height</label>
-        <input type="text" id="height" placeholder="height in cm" />
+        <input
+          required
+          type="text"
+          id="height"
+          name="height"
+          placeholder="height in cm"
+        />
       </div>
 
       <div>
         <label for="weight">Weight</label>
-        <input type="text" id="weight" placeholder="weight in kg" />
+        <input
+          required
+          type="text"
+          id="weight"
+          name="weight"
+          placeholder="weight in kg"
+        />
       </div>
 
       <div>
         <label for="male">Male</label>
-        <input type="radio" id="male" name="sex" value="male" />
+        <input type="radio" id="male" name="sex" value="male" checked />
 
         <label for="female">Female</label>
         <input type="radio" id="female" name="sex" value="female" />
@@ -50,6 +63,7 @@
           <option value="5">Strenuous exercise 7 times per week</option>
         </select>
       </div>
+      <button>Calculate</button>
     </form>
   </body>
 </html>
