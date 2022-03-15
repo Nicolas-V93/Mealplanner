@@ -11,7 +11,7 @@
   <body>
     <h1>Create a meal plan in 3 simple steps!</h1>
 
-    <!-- Getting userdata from Form Using the Harris-Benedict formula -->
+    <!-- 1) Getting userdata from Form Using the Harris-Benedict formula -->
     <form id="person-info" action="">
       <div>
         <button type="button">Imperial</button>
@@ -63,7 +63,35 @@
           <option value="5">Strenuous exercise 7 times per week</option>
         </select>
       </div>
+
+      <div>
+        <label for="goal">Select your goal</label>
+        <select name="goal" id="goal">
+          <option value="0">Gain muscle and lose fat</option>
+          <option value="-5">Lose fat (5% calorie reduction)</option>
+          <option value="-10">Lose fat (10% calorie reduction)</option>
+          <option value="-15">Lose fat (15% calorie reduction)</option>
+          <option value="-20">Lose fat (20% calorie reduction)</option>
+        </select>
+      </div>
+
       <button>Calculate</button>
     </form>
+
+    <!-- 2) Displaying container with values calculated from the previous form -->
+    <section id="person-data">
+      <div>
+        <h3>Basal Metabolic Rate (BMR)</h3>
+        <p>some value</p>
+      </div>
+      <div>
+        <h3>Total Daily Energy Expenditure (TDEE)</h3>
+        <p>some value</p>
+      </div>
+      <div>
+        <h3>Daily calories based on goal</h3>
+        <p>some value</p>
+      </div>
+    </section>
   </body>
 </html>
