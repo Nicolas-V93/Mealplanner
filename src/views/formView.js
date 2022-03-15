@@ -1,4 +1,4 @@
-class PersonInfo {
+class FormView {
   #form = document.querySelector('#person-info');
 
   addHandlerProcessInfo(handler) {
@@ -11,4 +11,4 @@ class PersonInfo {
   }
 }
 
-export default new PersonInfo();
+export default new FormView();
