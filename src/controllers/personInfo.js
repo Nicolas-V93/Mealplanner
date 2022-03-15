@@ -1,14 +1,14 @@
 import personInfoView from '../views/personInfoView.js';
-import PersonData from '../models/person.js';
+import personModel from '../models/person.js';
 
-const controllerProcessPersonInfo = function (formData) {
-  const person = new PersonData();
-  const BMR = person.calculateTDEE(formData);
-  console.log(BMR);
+const ProcessPersonInfo = function (formData) {
+  const BMR = personModel.GetBMR(formData);
+  const TDEE = personModel.GetTDEE(BMR, formData.activity);
+  console.log(BMR, TDEE);
 };
 
 const init = function () {
-  personInfoView.addHandlerProcessInfo(controllerProcessPersonInfo);
+  personInfoView.addHandlerProcessInfo(ProcessPersonInfo);
 };
 
 init();

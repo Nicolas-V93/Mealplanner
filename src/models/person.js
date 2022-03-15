@@ -7,8 +7,8 @@ class PersonData {
     5: 1.9,
   };
 
-  calculateTDEE(formData) {
-    return Math.ceil(
+  GetBMR(formData) {
+    return Math.round(
       this.#calculateBMR(
         formData.sex,
         +formData.weight,
@@ -18,8 +18,11 @@ class PersonData {
     );
   }
 
+  GetTDEE(BMR, activity) {
+    return Math.round(BMR * this.#activityFactor[activity]);
+  }
+
   #calculateBMR(sex, weight, height, age) {
-    console.log(sex, typeof weight, typeof height, age);
     if (sex === 'male')
       return 88.362 + 13.397 * weight + 4.799 * height - 5.677 * age;
     if (sex === 'female')
@@ -27,7 +30,7 @@ class PersonData {
   }
 }
 
-export default PersonData;
+export default new PersonData();
 
 // <!-- Men:
 // BMR = 66.5 + (13.75 × weight [kg]) + (5.003 × height [cm]) – (6.775 × age [years])
