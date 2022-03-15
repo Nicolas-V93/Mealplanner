@@ -15,11 +15,11 @@ class StatsView {
     return `
     <div>
         <h3>Basal Metabolic Rate (BMR)</h3>
-        <p>${data.BMR}</p>
+        <p>${data.bmr}</p>
     </div>
     <div>
         <h3>Total Daily Energy Expenditure (TDEE)</h3>
-        <p>${data.TDEE}</p>
+        <p>${data.tdee}</p>
     </div>
     <div>
         <h3>Daily calories based on goal</h3>

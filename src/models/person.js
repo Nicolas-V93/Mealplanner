@@ -4,7 +4,8 @@ import {
   FATS_PERCENTAGE,
 } from '../config.js';
 
-class PersonData {
+class Person {
+  state = { stats: {} };
   #activityFactor = {
     1: 1.2,
     2: 1.375,
@@ -13,7 +14,19 @@ class PersonData {
     5: 1.9,
   };
 
-  getBMR(formData) {
+  calculateStats(formData) {
+    this.state.stats.bmr = this.#getBMR(formData);
+    this.state.stats.tdee = this.#getTDEE(
+      this.state.stats.bmr,
+      formData.activity
+    );
+    this.state.stats.goalTDEE = this.#getGoalTDEE(
+      this.state.stats.tdee,
+      formData.goal
+    );
+  }
+
+  #getBMR(formData) {
     return Math.round(
       this.#calculateBMR(
         formData.sex,
@@ -24,15 +37,15 @@ class PersonData {
     );
   }
 
-  getTDEE(BMR, activity) {
+  #getTDEE(BMR, activity) {
     return Math.round(BMR * this.#activityFactor[activity]);
   }
 
-  getGoalTDEE(TDEE, goalPercentage) {
+  #getGoalTDEE(TDEE, goalPercentage) {
     return Math.round(TDEE + TDEE * (+goalPercentage / 100));
   }
 
-  getMacros(goalTDEE) {
+  #getMacros(goalTDEE) {
     const carbs = goalTDEE * (CARBS_PERCENTAGE / 100);
     const proteins = goalTDEE * (PROTEINS_PERCENTAGE / 100);
     const fats = goalTDEE * (FATS_PERCENTAGE * 100);
@@ -48,7 +61,7 @@ class PersonData {
   }
 }
 
-export default new PersonData();
+export default new Person();
 
 // Harris-Benedict Formula
 
