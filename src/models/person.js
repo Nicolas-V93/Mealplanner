@@ -1,3 +1,9 @@
+import {
+  CARBS_PERCENTAGE,
+  PROTEINS_PERCENTAGE,
+  FATS_PERCENTAGE,
+} from '../config.js';
+
 class PersonData {
   #activityFactor = {
     1: 1.2,
@@ -7,7 +13,7 @@ class PersonData {
     5: 1.9,
   };
 
-  GetBMR(formData) {
+  getBMR(formData) {
     return Math.round(
       this.#calculateBMR(
         formData.sex,
@@ -18,12 +24,19 @@ class PersonData {
     );
   }
 
-  GetTDEE(BMR, activity) {
+  getTDEE(BMR, activity) {
     return Math.round(BMR * this.#activityFactor[activity]);
   }
 
-  GetGoalTDEE(TDEE, goalPercentage) {
+  getGoalTDEE(TDEE, goalPercentage) {
     return Math.round(TDEE + TDEE * (+goalPercentage / 100));
+  }
+
+  getMacros(goalTDEE) {
+    const carbs = goalTDEE * (CARBS_PERCENTAGE / 100);
+    const proteins = goalTDEE * (PROTEINS_PERCENTAGE / 100);
+    const fats = goalTDEE * (FATS_PERCENTAGE * 100);
+    return { carbs, fats, proteins };
   }
 
   #calculateBMR(sex, weight, height, age) {

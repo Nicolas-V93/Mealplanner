@@ -3,14 +3,15 @@ import formView from '../views/formView.js';
 import statsView from '../views/StatsView.js';
 
 const processPersonInfo = function (formData) {
-  const BMR = personModel.GetBMR(formData);
-  const TDEE = personModel.GetTDEE(BMR, formData.activity);
-  const goalTDEE = personModel.GetGoalTDEE(TDEE, formData.goal);
+  const BMR = personModel.getBMR(formData);
+  const TDEE = personModel.getTDEE(BMR, formData.activity);
+  const goalTDEE = personModel.getGoalTDEE(TDEE, formData.goal);
   showStatistics({ BMR, TDEE, goalTDEE });
 };
 
 const showStatistics = function (data) {
-  statsView.displayStats(data);
+  data.macros = personModel.getMacros(data.goalTDEE);
+  // statsView.displayStats(data);
 };
 
 const init = function () {

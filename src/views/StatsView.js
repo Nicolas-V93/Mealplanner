@@ -25,6 +25,10 @@ class StatsView {
         <h3>Daily calories based on goal</h3>
         <p>${data.goalTDEE}</p>
     </div>
+    <div>
+        <h3>Macros</h3>
+        <p></p>
+    </div>
 `;
   }
 }
