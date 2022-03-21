@@ -2,6 +2,9 @@ import {
   CARBS_PERCENTAGE,
   PROTEINS_PERCENTAGE,
   FATS_PERCENTAGE,
+  CARBS_CALORIE_PER_GRAM,
+  PROTEINS_CALORIE_PER_GRAM,
+  FATS_CALORIE_PER_GRAM,
 } from '../config.js';
 
 class Person {
@@ -24,6 +27,7 @@ class Person {
       this.state.stats.tdee,
       formData.goal
     );
+    this.state.stats.macros = this.#getMacros(this.state.stats.goalTDEE);
   }
 
   #getBMR(formData) {
@@ -46,9 +50,15 @@ class Person {
   }
 
   #getMacros(goalTDEE) {
-    const carbs = goalTDEE * (CARBS_PERCENTAGE / 100);
-    const proteins = goalTDEE * (PROTEINS_PERCENTAGE / 100);
-    const fats = goalTDEE * (FATS_PERCENTAGE * 100);
+    const carbs = Math.round(
+      (goalTDEE * (CARBS_PERCENTAGE / 100)) / CARBS_CALORIE_PER_GRAM
+    );
+    const proteins = Math.round(
+      (goalTDEE * (PROTEINS_PERCENTAGE / 100)) / PROTEINS_CALORIE_PER_GRAM
+    );
+    const fats = Math.round(
+      (goalTDEE * (FATS_PERCENTAGE / 100)) / FATS_CALORIE_PER_GRAM
+    );
     return { carbs, fats, proteins };
   }
 

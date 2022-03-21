@@ -4,6 +4,7 @@ import statsView from '../views/statsView.js';
 
 const processPersonInfo = function (formData) {
   personModel.calculateStats(formData);
+  console.log(personModel.state.stats);
   statsView.displayStats(personModel.state.stats);
 };
 
