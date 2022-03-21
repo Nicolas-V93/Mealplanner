@@ -2,9 +2,10 @@
   "name": "meal-planner",
   "version": "1.0.0",
   "description": "A personalized custom meal planner",
-  "main": "index.js",
   "scripts": {
-    "test": "eslint test.js"
+    "test": "eslint test.js",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "author": "Nicolas-V93",
   "license": "ISC",
@@ -14,6 +15,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-prettier": "^4.0.0",
+    "parcel": "^2.3.2",
     "prettier": "^2.5.1"
   }
 }
