@@ -17,5 +17,9 @@
     "eslint-plugin-prettier": "^4.0.0",
     "parcel": "^2.3.2",
     "prettier": "^2.5.1"
+  },
+  "dependencies": {
+    "chart.js": "^3.7.1",
+    "chartjs-plugin-datalabels": "^2.0.0"
   }
 }
