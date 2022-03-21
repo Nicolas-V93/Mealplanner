@@ -27,7 +27,9 @@ class StatsView {
     </div>
     <div>
         <h3>Macros</h3>
-        <p></p>
+        <p>Carbs: ${data.macros.carbs} grams</p>
+        <p>Protein: ${data.macros.proteins} grams</p>
+        <p>Fat: ${data.macros.fats} grams</p>
     </div>
 `;
   }
