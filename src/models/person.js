@@ -18,6 +18,9 @@ class Person {
   };
 
   calculateStats(formData) {
+
+
+
     this.state.stats.bmr = this.#getBMR(formData);
     this.state.stats.tdee = this.#getTDEE(
       this.state.stats.bmr,

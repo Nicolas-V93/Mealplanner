@@ -28,12 +28,12 @@ class FormView {
 
   #renderForm(e) {
     this.#clear();
-    const markup = this.#generateMarkup(e);
+    const unit = e.target.dataset.unit;
+    const markup = this.#generateMarkup(unit);
     this.#form.insertAdjacentHTML('afterbegin', markup);
   }
 
-  #generateMarkup(e) {
-    const unit = e.target.dataset.unit;
+  #generateMarkup(unit) {
     return `
     <div>
         <label for="age">Age</label>
@@ -53,7 +53,7 @@ class FormView {
 
         ${
           unit === 'imperial'
-            ? '<input required type="text" id="height" name="height" placeholder="Inch"'
+            ? '<input required type="text" id="height-inch" name="height-inch" placeholder="Inch"'
             : ''
         }
 

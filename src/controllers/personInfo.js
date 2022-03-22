@@ -3,8 +3,9 @@ import formView from '../views/formView.js';
 import statsView from '../views/statsView.js';
 
 const processPersonInfo = function (formData) {
+  console.log(formData);
   personModel.calculateStats(formData);
-  console.log(personModel.state.stats);
+  // console.log(personModel.state.stats);
   statsView.displayStats(personModel.state.stats);
 };
 
