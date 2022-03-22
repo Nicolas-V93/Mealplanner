@@ -6,6 +6,11 @@ import {
   PROTEINS_CALORIE_PER_GRAM,
   FATS_CALORIE_PER_GRAM,
 } from '../config.js';
+import {
+  convertFeetToInches,
+  convertWeightToMetric,
+  convertInchesToCM,
+} from '../helpers.js';
 
 class Person {
   state = { stats: {} };
@@ -17,9 +22,17 @@ class Person {
     5: 1.9,
   };
 
-  calculateStats(formData) {
-
-
+  calculateStats(formData, typeOfUnit) {
+    console.log(formData);
+    if (typeOfUnit === 'imperial') {
+      formData.weight = this.#convertWeight(formData.weight);
+      formData.height = this.#convertHeight(
+        formData.height,
+        formData.heightInch
+      );
+      delete formData.heightInch;
+    }
+    console.log(formData);
 
     this.state.stats.bmr = this.#getBMR(formData);
     this.state.stats.tdee = this.#getTDEE(
@@ -71,6 +84,15 @@ class Person {
     0;
     if (sex === 'female')
       return 447.593 + 9.247 * weight + 3.098 * height - 4.33 * age;
+  }
+
+  #convertWeight(weightInLbs) {
+    return convertWeightToMetric(weightInLbs);
+  }
+
+  #convertHeight(feet, inch) {
+    const heightInInches = convertFeetToInches(feet) + +inch;
+    return convertInchesToCM(heightInInches);
   }
 }
 

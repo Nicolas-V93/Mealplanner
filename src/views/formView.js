@@ -17,7 +17,7 @@ class FormView {
       e.preventDefault();
       const dataArr = [...new FormData(this)];
       const formData = Object.fromEntries(dataArr);
-      handler(formData);
+      handler(formData, this.dataset.unit);
     });
   }
 
@@ -27,8 +27,9 @@ class FormView {
   }
 
   #renderForm(e) {
-    this.#clear();
     const unit = e.target.dataset.unit;
+    this.#clear();
+    this.#form.dataset.unit = unit;
     const markup = this.#generateMarkup(unit);
     this.#form.insertAdjacentHTML('afterbegin', markup);
   }
@@ -53,7 +54,7 @@ class FormView {
 
         ${
           unit === 'imperial'
-            ? '<input required type="text" id="height-inch" name="height-inch" placeholder="Inch"'
+            ? '<input required type="text" id="height-inch" name="heightInch" placeholder="Inch"'
             : ''
         }
 
