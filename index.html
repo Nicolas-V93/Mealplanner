@@ -4,41 +4,139 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="img/diary.png" />
-    <title>Custom Meal Planner</title>
-    <script type="module" src="/src/controllers/personInfo.js"></script>
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/sass/main.scss" />
+    <title>Vitality &mdash; Mealplanner</title>
+    <!-- <script type="module" src="/src/controllers/personInfo.js"></script> -->
   </head>
   <body>
-    <h1>Create a meal plan in 3 simple steps!</h1>
+    <header class="header">
+      <a href="#">
+        <img
+          class="header__banner"
+          alt="Vitality logo"
+          src="img/vitality-banner.png"
+        />
+      </a>
+      <nav class="nav">
+        <button type="button" class="btn btn--large btn--orange">
+          View mealplan
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section-hero">
+        <div class="hero">
+          <div class="hero__text-box">
+            <h1 class="heading-primary">
+              Create a meal plan in
+              <span class="heading-primary__mark">3 simple steps!</span>
+            </h1>
+            <p class="hero__description">
+              Eating healthy has never been easier. We create a personalized
+              mealplan for the week based on your daily caloric needs.
+            </p>
+            <a
+              class="btn btn--large btn--full"
+              href="https://www.hln.be"
+              target="_blank"
+              >Get started</a
+            >
+            <a class="btn btn--large btn--outline" href="#"
+              >Learn more &darr;</a
+            >
+            <div class="hero__customers">
+              <img src="img/customer-1.jpg" alt="Customer Photo" />
+              <img src="img/customer-2.jpg" alt="Customer Photo" />
+              <img src="img/customer-3.jpg" alt="Customer Photo" />
+              <img src="img/customer-4.jpg" alt="Customer Photo" />
+              <img src="img/customer-5.jpg" alt="Customer Photo" />
+              <img src="img/customer-6.jpg" alt="Customer Photo" />
+              <p><span class="hero__users">3000+</span> monthly users!</p>
+            </div>
+            <div class="hero__icons">
+              <a class="btn btn--small btn--outline" href="#">
+                <img class="hero__icon" src="img/logo-apple.svg" />
+                <span>App Store</span>
+              </a>
+              <a
+                class="btn btn--small btn--outline hero__icon--play-store"
+                href="#"
+              >
+                <img class="hero__icon" src="img/logo-google-playstore.svg" />
+                <span>Play Store</span>
+              </a>
+            </div>
+          </div>
+          <div class="hero__img-box">
+            <img class="hero__img" src="/img/hero-img.png" alt="" />
+          </div>
+        </div>
+      </section>
+
+      <section class="section-how">
+        <div class="container center-text">
+          <h2 class="heading-secondary">How it works</h2>
+        </div>
+        <div class="container grid">
+          <div class="step-box-1">
+            <p class="step-number">01</p>
+            <h3 class="heading-tertiary">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
+              doloribus, natus reprehenderit reiciendis repudiandae cumque
+              aliquid, eaque obcaecati rerum perferendis laudantium similique
+              eum laboriosam, nulla blanditiis culpa nesciunt nisi nobis!
+            </h3>
+          </div>
+          <div class="step-box-2">
+            <div class="step-box-1">
+              <p class="step-number">02</p>
+              <h3 class="heading-tertiary">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Nostrum itaque sapiente, nulla voluptates voluptatem distinctio
+                quidem temporibus doloremque voluptate at natus, dicta molestiae
+                corporis repellendus aliquam inventore quia unde minus.
+              </h3>
+            </div>
+          </div>
+          <div class="step-box-3">
+            <div class="step-box-1">
+              <p class="step-number">03</p>
+              <h3 class="heading-tertiary">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint
+                totam iure quasi saepe incidunt repellendus consequuntur,
+                dolorum exercitationem nam facere recusandae ad consectetur
+                placeat fugit rem eveniet nemo est doloremque?
+              </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <!-- 1) Getting userdata from Form -->
 
-    <div>
-      <button data-unit="imperial" class="btn-imperial" type="button">
+    <!-- <div>
+      <button data-unit="imperial" class="btn btn-imperial" type="button">
         Imperial
       </button>
-      <button data-unit="metric" class="btn-metric" type="button">
+      <button data-unit="metric" class="btn btn-metric" type="button">
         Metric
       </button>
-    </div>
+    </div> -->
 
-    <form id="person-info" action=""></form>
+    <!-- <form id="person-info" action=""></form> -->
 
     <!-- 2) Displaying container with values calculated from the previous form -->
 
-    <section id="person-data">
-      <!-- <div>
-        <h3>Basal Metabolic Rate (BMR)</h3>
-        <p>some value</p>
-      </div>
-      <div>
-        <h3>Total Daily Energy Expenditure (TDEE)</h3>
-        <p>some value</p>
-      </div>
-      <div>
-        <h3>Daily calories based on goal</h3>
-        <p>some value</p>
-      </div> -->
-    </section>
+    <!-- <section id="person-data">
+    </section> -->
   </body>
 </html>

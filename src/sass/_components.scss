@@ -1,0 +1,74 @@
+@use 'variables' as *;
+
+// ** BUTTONS **
+
+.btn,
+.btn:link,
+.btn:visited {
+  display: inline-block;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 9px;
+  border: 1.2px solid transparent;
+  transition: all 0.4s;
+}
+
+.btn--large {
+  font-size: $font-text-normal;
+  padding: 1.2rem 2.4rem;
+}
+
+.btn--small {
+  font-size: $font-text-small;
+  padding: 0.8rem 1.6rem;
+}
+
+.btn--full {
+  background-color: $color-primary;
+  color: $color-grey;
+  margin-right: $space-1;
+}
+
+.btn--outline {
+  color: $color-grey;
+  background-color: $color-btn-outline;
+}
+
+.btn--full:hover {
+  color: #fff;
+  background-color: #4d7c0f;
+}
+
+.btn--outline:hover,
+.btn--orange:hover {
+  background-color: $color-background;
+  border: 1.2px solid #4b5563;
+}
+
+.btn--orange {
+  color: $color-grey;
+  background-color: $color-accent;
+}
+
+// ** Container **
+
+.container {
+  max-width: 120rem;
+  padding: 0 3.2rem;
+  margin: 0 auto;
+}
+
+// ** Headings
+
+.heading-secondary {
+  font-size: $font-heading-secondary;
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  margin-bottom: 9.6rem;
+}
+
+.center-text {
+  text-align: center;
+}

@@ -1,11 +1,11 @@
 class FormView {
   #form = document.querySelector('#person-info');
-  #btnMetric = document.querySelector('.btn-metric');
-  #btnImperial = document.querySelector('.btn-imperial');
+  #btnMetric = document.querySelector('[data-unit="metric"]');
+  #btnImperial = document.querySelector('[data-unit="imperial"]');
 
   constructor() {
     this.#addHandlerShowForm();
-    this.#btnMetric.click(); // On page load show metric form by default
+    //this.#btnMetric.click(); // On page load show metric form by default
   }
 
   #clear() {

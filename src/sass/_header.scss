@@ -1,0 +1,16 @@
+@use 'variables' as *;
+
+// STYLING THE HEADER
+
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $color-background;
+  padding: 3.2rem 4.8rem;
+
+  &__banner {
+    height: 4.8rem;
+  }
+}
