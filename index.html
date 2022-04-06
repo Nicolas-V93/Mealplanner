@@ -13,7 +13,7 @@
     />
     <link rel="stylesheet" href="src/sass/main.scss" />
     <title>Vitality &mdash; Mealplanner</title>
-    <!-- <script type="module" src="/src/controllers/personInfo.js"></script> -->
+    <script type="module" src="/src/controllers/personInfo.js"></script>
   </head>
   <body>
     <header class="header">
@@ -43,13 +43,8 @@
               Eating healthy has never been easier. We create a personalized
               mealplan for the week based on your daily caloric needs.
             </p>
-            <a
-              class="btn btn--large btn--full"
-              href="https://www.hln.be"
-              target="_blank"
-              >Get started</a
-            >
-            <a class="btn btn--large btn--outline" href="#"
+            <a class="btn btn--large btn--full" href="#mealplan">Get started</a>
+            <a class="btn btn--large btn--outline" href="#how"
               >Learn more &darr;</a
             >
             <div class="hero__customers">
@@ -81,7 +76,7 @@
         </div>
       </section>
 
-      <section class="section-how">
+      <section id="how" class="section-how">
         <div class="container center-text">
           <h2 class="heading-secondary">How it works</h2>
         </div>
@@ -119,24 +114,27 @@
           </div>
         </div>
       </section>
+
+      <section id="mealplan" class="section-mealplan">
+        <button type="button" id="create-mealplan" class="btn btn--large">
+          Create mealplan
+        </button>
+
+        <dialog class="modal">
+          <form
+            style="width: 50vh; height: 50vh"
+            id="form-data"
+            action=""
+            method="dialog"
+          ></form>
+        </dialog>
+
+        <div id="person-data"></div>
+      </section>
     </main>
-
-    <!-- 1) Getting userdata from Form -->
-
-    <!-- <div>
-      <button data-unit="imperial" class="btn btn-imperial" type="button">
-        Imperial
-      </button>
-      <button data-unit="metric" class="btn btn-metric" type="button">
-        Metric
-      </button>
-    </div> -->
-
-    <!-- <form id="person-info" action=""></form> -->
 
     <!-- 2) Displaying container with values calculated from the previous form -->
 
-    <!-- <section id="person-data">
-    </section> -->
+    <!-- <section id="person-data"></section> -->
   </body>
 </html>

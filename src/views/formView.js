@@ -1,11 +1,10 @@
 class FormView {
-  #form = document.querySelector('#person-info');
-  #btnMetric = document.querySelector('[data-unit="metric"]');
-  #btnImperial = document.querySelector('[data-unit="imperial"]');
+  #modal = document.querySelector('.modal');
+  #form = document.querySelector('#form-data');
+  #btnCreate = document.querySelector('#create-mealplan');
 
   constructor() {
     this.#addHandlerShowForm();
-    //this.#btnMetric.click(); // On page load show metric form by default
   }
 
   #clear() {
@@ -22,43 +21,75 @@ class FormView {
   }
 
   #addHandlerShowForm() {
-    this.#btnMetric.addEventListener('click', this.#renderForm.bind(this));
-    this.#btnImperial.addEventListener('click', this.#renderForm.bind(this));
+    this.#btnCreate.addEventListener('click', e => {
+      this.#renderForm(e);
+      this.#modal.showModal();
+    });
+  }
+
+  #addHandlerHideModal() {
+    document
+      .querySelector('.close-modal')
+      .addEventListener('click', () => this.#modal.close());
+    document
+      .querySelector('.btn-submit')
+      .addEventListener('click', () => this.#modal.close());
+  }
+
+  #addHandlerUnit() {
+    document
+      .querySelector('.btn-metric')
+      .addEventListener('click', this.#renderForm.bind(this));
+    document
+      .querySelector('.btn-imperial')
+      .addEventListener('click', this.#renderForm.bind(this));
   }
 
   #renderForm(e) {
-    const unit = e.target.dataset.unit;
     this.#clear();
+    const unit = e.target.dataset.unit ?? 'metric';
+
     this.#form.dataset.unit = unit;
     const markup = this.#generateMarkup(unit);
     this.#form.insertAdjacentHTML('afterbegin', markup);
+
+    this.#addHandlerUnit();
+    this.#addHandlerHideModal();
+    // document.querySelector('[data-unit="metric"]');
   }
 
   #generateMarkup(unit) {
     return `
     <div>
-        <label for="age">Age</label>
-        <input required type="text" id="age" name="age" />
-      </div>
-      <div class="unit-container">
-        <div>
-          <label for="height">Height</label>
-          <input
+      <button data-unit="imperial" class="btn-imperial" type="button">
+        Imperial
+      </button>
+      <button data-unit="metric" class="btn-metric" type="button">
+        Metric
+      </button>
+      <button type="button" class="close-modal">X</button>
+    </div>
+    <div>
+      <label for="age">Age</label>
+      <input required type="text" id="age" name="age" />
+    </div>
+    <div class="unit-container">
+      <div>
+        <label for="height">Height</label>
+        <input
             required
             type="text"
             id="height"
             name="height"
             placeholder="${unit === 'metric' ? 'height in cm' : 'Feet'}"
-          />
-        </div>
-
+        />
+      </div>
         ${
           unit === 'imperial'
             ? '<input required type="text" id="height-inch" name="heightInch" placeholder="Inch"'
             : ''
         }
-
-        <div>
+       <div>
           <label for="weight">Weight</label>
           <input
             required
@@ -67,7 +98,7 @@ class FormView {
             name="weight"
             placeholder="weight in ${unit === 'metric' ? 'kg' : 'pounds'}"
           />
-        </div>
+       </div>
       </div>
 
       <div>
@@ -100,7 +131,7 @@ class FormView {
         </select>
       </div>
 
-      <button>Calculate</button>
+      <button class="btn-submit" type="submit">Calculate</button>
     `;
   }
 }
