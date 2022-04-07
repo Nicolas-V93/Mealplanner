@@ -36,16 +36,8 @@ class StatsView {
           {
             label: 'macros',
             data: [macros.carbs, macros.proteins, macros.fats],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-            ],
+            backgroundColor: ['#f1f5f9', '#e2e8f0', '#cbd5e1'],
+            borderColor: ['#f1f5f9', '#e2e8f0', '#cbd5e1'],
             borderWidth: 1,
           },
         ],
@@ -87,7 +79,6 @@ class StatsView {
         <p>${data.goalTDEE}</p>
     </div>
     <div>
-        <h3>Macros</h3>
         <canvas id="macroChart" width="400" height="400"></canvas>
     </div>
 `;

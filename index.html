@@ -116,25 +116,125 @@
       </section>
 
       <section id="mealplan" class="section-mealplan">
-        <button type="button" id="create-mealplan" class="btn btn--large">
-          Create mealplan
-        </button>
+        <div>
+          <button type="button" id="create-mealplan" class="btn btn--large">
+            Create mealplan
+          </button>
+        </div>
 
         <dialog class="modal">
-          <form
-            style="width: 50vh; height: 50vh"
-            id="form-data"
-            action=""
-            method="dialog"
-          ></form>
+          <div class="form__close flex-container flex-end">
+            <button
+              class="close-modal btn btn--small btn--orange"
+              type="button"
+            >
+              X
+            </button>
+          </div>
+          <form id="form-data" action=""></form>
         </dialog>
 
-        <div id="person-data"></div>
+        <div id="person-data" style="max-width: 50%"></div>
       </section>
     </main>
 
-    <!-- 2) Displaying container with values calculated from the previous form -->
+    <!-- <section class="form">
+      <div class="form__description center-text">
+        Fill in the form to calculate data
+      </div>
 
-    <!-- <section id="person-data"></section> -->
+      <div class="form__units flex-container flex-center">
+        <div class="switch-button">
+          <input class="switch-button-checkbox" type="checkbox" />
+          <label class="switch-button-label" for="">
+            <span class="switch-button-label-span">Metric</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form__age">
+          <label class="form__label" for="age">Age</label>
+          <input
+            class="form__field"
+            required
+            type="number"
+            min="0"
+            id="age"
+            name="age"
+            placeholder="Enter your current age"
+          />
+        </div>
+
+        <div class="form__height">
+          <label class="form__label" for="height">Height</label>
+          <input
+            class="form__field"
+            required
+            type="number"
+            min="140"
+            id="height"
+            name="height"
+            placeholder=""
+          />
+        </div>
+        <div class="form__weight">
+          <label class="form__label" for="weight">Weight</label>
+          <input
+            class="form__field"
+            required
+            type="number"
+            min="0"
+            id="weight"
+            name="weight"
+            placeholder="Weight"
+          />
+        </div>
+
+        <div class="form__gender">
+          <label class="form__label" for="weight">Gender</label>
+          <div class="form__flex form__field">
+            <div class="form__radio">
+              <label for="male">Male</label>
+              <input type="radio" id="male" name="sex" value="male" checked />
+            </div>
+            <div class="form__radio">
+              <label for="female">Female</label>
+              <input type="radio" id="female" name="sex" value="female" />
+            </div>
+          </div>
+        </div>
+
+        <div class="form__activity">
+          <label class="form__label" for="activity"
+            >Select activity level</label
+          >
+          <select class="form__field" name="activity" id="activity">
+            <option value="1">Little to no exercise</option>
+            <option value="2">Light exercise 1-3 times per week</option>
+            <option value="3">Moderate exercise 3-5 times per week</option>
+            <option value="4">Heavy exercise 5-6 times per week</option>
+            <option value="5">Strenuous exercise 7 times per week</option>
+          </select>
+        </div>
+
+        <div class="form__goal">
+          <label class="form__label" for="goal">Select your goal</label>
+          <select class="form__field" name="goal" id="goal">
+            <option value="0">Gain muscle and lose fat</option>
+            <option value="-5">Lose fat (5% calorie reduction)</option>
+            <option value="-10">Lose fat (10% calorie reduction)</option>
+            <option value="-15">Lose fat (15% calorie reduction)</option>
+            <option value="-20">Lose fat (20% calorie reduction)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="flex-container flex-center">
+        <button class="btn btn--large btn--full btn--submit" type="submit">
+          Calculate
+        </button>
+      </div>
+    </section> -->
   </body>
 </html>
