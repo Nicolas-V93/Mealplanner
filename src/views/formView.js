@@ -130,11 +130,11 @@ class FormView {
         <div class="form__gender">
           <label class="form__label" for="weight">Gender</label>
           <div class="form__flex form__field">
-            <div class="form__radio">
+            <div class="form__flex">
               <label for="male">Male</label>
               <input type="radio" id="male" name="sex" value="male" checked />
             </div>
-            <div class="form__radio">
+            <div class="form__flex">
               <label for="female">Female</label>
               <input type="radio" id="female" name="sex" value="female" />
             </div>

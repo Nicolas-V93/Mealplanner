@@ -14,67 +14,59 @@ dialog::backdrop {
   backdrop-filter: blur(10px);
 }
 
-.form__description {
-  font-weight: 700;
-  font-size: $font-heading-tertiary;
-  line-height: 1.05;
-  margin-bottom: 4.8rem;
-}
+.form {
+  &__description {
+    font-weight: 700;
+    font-size: $font-heading-tertiary;
+    line-height: 1.05;
+    margin-bottom: 4.8rem;
+  }
 
-.form__age,
-.form__height,
-.form__weight,
-.form__gender,
-.form__activity,
-.form__goal {
-  margin: 0 2.4rem;
-  margin-bottom: 1.6rem;
-}
+  &__label {
+    display: block;
+    font-weight: 700;
+    font-size: $font-text-tiny;
+    margin-bottom: 0.4rem;
+  }
 
-.form__label {
-  display: block;
-  font-weight: 700;
-  font-size: $font-text-tiny;
-  margin-bottom: 0.4rem;
-}
+  &__field {
+    min-height: 5rem;
+    font-size: 1.4rem;
+    display: block;
+    width: 100%;
+    padding: 1.2rem;
+    background-color: $color-accent;
+    border: none;
+    border-radius: 4px;
+  }
 
-.form__field {
-  min-height: 5rem;
-  font-size: 1.4rem;
-  display: block;
-  width: 100%;
-  padding: 1.2rem;
-  background-color: $color-accent;
-  border: none;
-  border-radius: 4px;
-}
+  &__flex {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
 
-.form__flex {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-}
+  &__close {
+    padding: 1.2rem;
+  }
 
-.form__radio {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
+  &__units {
+    margin-bottom: 3.2rem;
+  }
 
-.form__close {
-  padding: 1.2rem;
-}
+  // spacing for inch input
+  &__height-container {
+    display: flex;
+    gap: 1.2rem;
+  }
 
-.form__units {
-  margin-bottom: 3.2rem;
+  &__age,
+  &__height,
+  &__weight,
+  &__gender,
+  &__activity,
+  &__goal {
+    margin: 0 2.4rem;
+    margin-bottom: 1.6rem;
+  }
 }
-
-// spacing for inch input
-.form__height-container {
-  display: flex;
-  gap: 1.2rem;
-}
-
-// - Spacing system (px)
-// 2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
-// */
