@@ -160,7 +160,7 @@ class FormView {
         </div>
       </div>
 
-      <div class="form-grid">
+      <div class="grid grid-col-2">
         <div class="form__age">
           <label class="form__label" for="age">Age</label>
           <input

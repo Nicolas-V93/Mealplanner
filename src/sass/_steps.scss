@@ -6,12 +6,6 @@
   background-color: $color-background-secondary;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 9.6rem;
-}
-
 .step-number {
   font-size: 8.6rem;
   font-weight: 900;
