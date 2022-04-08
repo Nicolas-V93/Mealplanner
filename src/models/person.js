@@ -10,6 +10,7 @@ import {
   convertFeetToInches,
   convertWeightToMetric,
   convertInchesToCM,
+  validateForm,
 } from '../helpers.js';
 
 class Person {
@@ -23,7 +24,6 @@ class Person {
   };
 
   calculateStats(formData, typeOfUnit) {
-    console.log(formData);
     if (typeOfUnit === 'imperial') {
       formData.weight = this.#convertWeight(formData.weight);
       formData.height = this.#convertHeight(
@@ -32,7 +32,8 @@ class Person {
       );
       delete formData.heightInch;
     }
-    console.log(formData);
+
+    if (!validateForm(formData)) throw new Error('Form is not valid');
 
     this.state.stats.bmr = this.#getBMR(formData);
     this.state.stats.tdee = this.#getTDEE(

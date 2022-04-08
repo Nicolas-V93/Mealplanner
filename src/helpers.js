@@ -9,6 +9,14 @@ export const convertFeetToInches = function (heightInFeet) {
 };
 
 export const convertInchesToCM = function (heightInInches) {
-  console.log(heightInInches);
   return Math.round(heightInInches * INCH_FACTOR);
+};
+
+export const validateForm = function (fields) {
+  const { age, height, weight } = fields;
+  return [age, height, weight].every(isValid);
+};
+
+const isValid = function (value) {
+  return value !== '';
 };
