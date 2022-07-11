@@ -13,6 +13,11 @@
     />
     <link rel="stylesheet" href="src/sass/main.scss" />
     <title>Vitality &mdash; Mealplanner</title>
+    <script
+      defer
+      src="https://kit.fontawesome.com/94084071af.js"
+      crossorigin="anonymous"
+    ></script>
     <script type="module" src="/src/controllers/personInfo.js"></script>
   </head>
   <body>
@@ -43,7 +48,7 @@
               Eating healthy has never been easier. We create a personalized
               mealplan for the week based on your daily caloric needs.
             </p>
-            <a class="btn btn--large btn--full" href="#mealplan">Get started</a>
+            <a class="btn btn--large btn--full" href="#stats">Get started</a>
             <a class="btn btn--large btn--outline" href="#how"
               >Learn more &darr;</a
             >
@@ -115,26 +120,77 @@
         </div>
       </section>
 
-      <section id="mealplan" class="section-mealplan">
-        <div>
-          <button type="button" id="create-mealplan" class="btn btn--large">
-            Create mealplan
+      <dialog class="modal" method="dialog">
+        <div class="form__close flex-container flex-end">
+          <button class="close-modal btn btn--small btn--orange" type="button">
+            X
           </button>
         </div>
+        <form id="form-data" action="" method="dialog"></form>
+      </dialog>
 
-        <dialog class="modal" method="dialog">
-          <div class="form__close flex-container flex-end">
-            <button
-              class="close-modal btn btn--small btn--orange"
-              type="button"
-            >
-              X
-            </button>
+      <section id="stats" class="section-statistics">
+        <div>
+          <button type="button" id="create-mealplan" class="btn btn--large">
+            Fill in the form
+          </button>
+        </div>
+        <div class="container grid grid__statistics">
+          <div id="person-stats" class="grid grid__data statistics"></div>
+
+          <div class="diet-container">
+            <div class="diet">
+              <div class="diet__all" data-diet="all">
+                <i class="diet__icon fa-solid fa-infinity"></i>
+                <button class="btn btn--small btn--diet">Anything</button>
+              </div>
+              <div class="diet__vegan" data-diet="vegan">
+                <i class="diet__icon fa-solid fa-leaf"></i>
+                <button class="btn btn--small btn--diet">Vegan</button>
+              </div>
+              <div class="diet__vegetarian" data-diet="vegetarian">
+                <i class="diet__icon fa-solid fa-seedling"></i>
+                <button class="btn btn--small btn--diet">Vegetarian</button>
+              </div>
+              <div class="diet__gluten-free" data-diet="glutenfree">
+                <i
+                  class="diet__icon fa-solid fa-wheat-awn-circle-exclamation"
+                ></i>
+                <button class="btn btn--small btn--diet">Gluten free</button>
+              </div>
+            </div>
+            <!-- <div class="num-meals">
+              <select name="num-meals" id="num-meals">
+                <option value="one">1 meal</option>
+                <option value="two">2 meals</option>
+                <option value="three">3 meals</option>
+                <option value="four">4 meals</option>
+                <option value="five">5 meals</option>
+                <option value="six">6 meals</option>
+              </select>
+            </div> -->
           </div>
-          <form id="form-data" action="" method="dialog"></form>
-        </dialog>
+        </div>
+      </section>
 
-        <div id="person-data" style="max-width: 50%"></div>
+      <section id="meals">
+        <!-- <div class="card">
+          <div class="card__image-container">
+            <img
+              class="card__image"
+              src="https://spoonacular.com/recipeImages/640383-556x370.jpg"
+              alt="Cranberry Juice"
+            />
+          </div>
+          <div class="card__header">
+            <h2>Cranberry Juice</h2>
+            <p>Preptime: 60mins</p>
+            <p>Servings: 6</p>
+            <p>Bookmark icon</p>
+          </div>
+          <div class="card__ingredients">...</div>
+          <div class="card__data">Add nutrition data here</div>
+        </div> -->
       </section>
     </main>
   </body>

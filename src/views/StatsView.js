@@ -8,7 +8,7 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 Chart.register(...registerables, ChartDataLabels);
 
 class StatsView {
-  #parentElement = document.querySelector('#person-data');
+  #parentElement = document.querySelector('#person-stats');
   #ctx;
 
   displayStats(data) {
@@ -43,6 +43,8 @@ class StatsView {
         ],
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           title: { text: 'Macros', display: true },
           datalabels: {
@@ -66,21 +68,26 @@ class StatsView {
 
   #generateMarkup(data) {
     return `
+  <div class="statistics__img-box">
+      <canvas id="macroChart" width="400" height="400">
+      </canvas>
+  </div>
+  <div class="statistics__text-box">
     <div>
-        <h3>Basal Metabolic Rate (BMR)</h3>
-        <p>${data.bmr}</p>
+      <h3 class="heading-quaternary">Basal Metabolic Rate (BMR)</h3>
+      <p class="statistics__data">${data.bmr}</p>
     </div>
     <div>
-        <h3>Total Daily Energy Expenditure (TDEE)</h3>
-        <p>${data.tdee}</p>
+      <h3 class="heading-quaternary">
+                  Total Daily Energy Expenditure (TDEE)
+                </h3>
+      <p class="statistics__data">${data.tdee}</p>
     </div>
     <div>
-        <h3>Daily calories based on goal</h3>
-        <p>${data.goalTDEE}</p>
+      <h3 class="heading-quaternary">Daily calories based on goal</h3>
+      <p class="statistics__data">${data.goalTDEE}</p>
     </div>
-    <div>
-        <canvas id="macroChart" width="400" height="400"></canvas>
-    </div>
+  </div>
 `;
   }
 }

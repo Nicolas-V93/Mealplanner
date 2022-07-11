@@ -103,7 +103,6 @@ class FormView {
           <input
             class="form__field"         
             type="number"
-            min="140"
             id="height"
             name="height"
             placeholder="${unit === 'metric' ? 'Height in cm' : 'Feet'}"
