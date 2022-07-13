@@ -1,0 +1,33 @@
+@use 'variables' as *;
+
+.section-meals {
+  background: $color-background-secondary;
+  padding: $space-3;
+}
+
+.meal {
+  gap: 15px;
+
+  &__image-container {
+    width: 15%;
+  }
+
+  &__image {
+    display: block;
+    max-width: 100%;
+    border-radius: 15%;
+  }
+
+  &__title {
+    font-size: $font-text-normal;
+  }
+
+  &__heading {
+    font-size: $font-text-tiny;
+  }
+
+  &__calories {
+    font-size: $font-text-tiny;
+    color: $color-grey-light;
+  }
+}

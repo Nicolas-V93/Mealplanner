@@ -10,4 +10,4 @@ export const LBS_FACTOR = 2.2046;
 export const FEET_TO_INCH_MULTIPLIER = 12;
 export const INCH_FACTOR = 2.54;
 
-export const API_KEY = '<ENTER YOUR API KEY HERE>';
+export const API_KEY = '<ENTER API KEY HERE>';

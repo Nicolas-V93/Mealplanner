@@ -74,17 +74,17 @@ class StatsView {
   </div>
   <div class="statistics__text-box">
     <div>
-      <h3 class="heading-quaternary">Basal Metabolic Rate (BMR)</h3>
+      <h3 class="heading-tertiary">Basal Metabolic Rate (BMR)</h3>
       <p class="statistics__data">${data.bmr}</p>
     </div>
     <div>
-      <h3 class="heading-quaternary">
+      <h3 class="heading-tertiary">
                   Total Daily Energy Expenditure (TDEE)
                 </h3>
       <p class="statistics__data">${data.tdee}</p>
     </div>
     <div>
-      <h3 class="heading-quaternary">Daily calories based on goal</h3>
+      <h3 class="heading-tertiary">Daily calories based on goal</h3>
       <p class="statistics__data">${data.goalTDEE}</p>
     </div>
   </div>

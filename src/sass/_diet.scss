@@ -1,3 +1,9 @@
+@use 'variables' as *;
+
+.diet-container > h4:nth-of-type(2) {
+  margin-top: $space-3;
+}
+
 .diet__icon {
   color: #65a30d;
   font-size: 4.4rem;
@@ -7,7 +13,7 @@
 .diet {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  row-gap: 3rem;
+  gap: 3rem;
 }
 
 .diet__all,
@@ -19,5 +25,13 @@
   align-items: center;
 }
 
-// - Font sizes (px)
-// 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+.diet__amountmeals {
+  display: flex;
+  margin-top: $space-0;
+}
+
+// toggle class when selecting a diet
+.diet--selected {
+  background-color: $color-accent;
+  border-radius: 60%;
+}

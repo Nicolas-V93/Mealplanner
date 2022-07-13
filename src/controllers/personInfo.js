@@ -10,11 +10,10 @@ const processPersonInfo = function (formData, typeOfUnit) {
   statsView.displayStats(personModel.state.stats);
 };
 
-const processTypeOfDiet = async function (typeOfDiet) {
-  const { recipes } = await dietModel.getMeal(typeOfDiet);
-  const [meal] = recipes;
-  console.log(meal);
-  mealView.displayMeal(meal);
+const processTypeOfDiet = async function (dietData) {
+  const recipes = await dietModel.getMeal(dietData);
+  console.log(recipes);
+  mealView.showMeals(recipes);
 };
 
 const init = function () {
