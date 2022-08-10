@@ -16,6 +16,15 @@ class FormView {
     });
   }
 
+  showErrorMessage(message) {
+    const errorDiv = this.#form.querySelector('.form__error');
+    errorDiv.textContent = message;
+  }
+
+  closeModal() {
+    this.#modal.close();
+  }
+
   #clear() {
     this.#form.innerHTML = '';
   }
@@ -38,10 +47,7 @@ class FormView {
   #addHandlerHideModal() {
     document
       .querySelector('.close-modal')
-      .addEventListener('click', () => this.#modal.close());
-    document
-      .querySelector('.btn--submit')
-      .addEventListener('click', () => this.#modal.close());
+      .addEventListener('click', () => this.closeModal());
   }
 
   #addHandlerUnit() {
@@ -83,12 +89,13 @@ class FormView {
         </div>
       </div>
 
+      <div class="form__error flex-container flex-center"></div>
+
       <div class="grid grid-col-2">
         <div class="form__age">
           <label class="form__label" for="age">Age</label>
           <input
             class="form__field"
-            
             type="number"
             min="0"
             id="age"
@@ -103,13 +110,14 @@ class FormView {
           <input
             class="form__field"         
             type="number"
+            min="0"
             id="height"
             name="height"
             placeholder="${unit === 'metric' ? 'Height in cm' : 'Feet'}"
           />
           ${
             unit === 'imperial'
-              ? '<input class="form__field"  type="text" id="height-inch" name="heightInch" placeholder="Inch" />'
+              ? '<input class="form__field"  type="number" min="0" id="height-inch" name="heightInch" placeholder="Inch" />'
               : ''
           }
           </div>
@@ -166,7 +174,7 @@ class FormView {
       </div>
 
       <div class="flex-container flex-center">
-        <button class="btn btn--large btn--full btn--submit">
+        <button type="submit" class="btn btn--large btn--full btn--submit">
           Calculate
         </button>
       </div>

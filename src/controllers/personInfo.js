@@ -7,8 +7,15 @@ import mealView from '../views/mealView.js';
 import mealDetailsView from '../views/mealDetailsView.js';
 
 const processPersonInfo = function (formData, typeOfUnit) {
-  personModel.calculateStats(formData, typeOfUnit);
-  statsView.displayStats(personModel.state.stats);
+  const result = personModel.validateForm(formData);
+
+  if (!result.pass) {
+    formView.showErrorMessage(result.error);
+  } else {
+    personModel.calculateStats(formData, typeOfUnit);
+    statsView.displayStats(personModel.state.stats);
+    formView.closeModal();
+  }
 };
 
 const processTypeOfDiet = async function (dietData) {

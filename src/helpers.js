@@ -12,11 +12,11 @@ export const convertInchesToCM = function (heightInInches) {
   return Math.round(heightInInches * INCH_FACTOR);
 };
 
-export const validateForm = function (fields) {
+export const validateInputs = function (fields) {
   const { age, height, weight } = fields;
   return [age, height, weight].every(isValid);
 };
 
 const isValid = function (value) {
-  return value !== '';
+  return value !== '' && value > 0;
 };
