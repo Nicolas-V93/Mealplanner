@@ -4,6 +4,7 @@ import formView from '../views/formView.js';
 import statsView from '../views/statsView.js';
 import dietView from '../views/dietView.js';
 import mealView from '../views/mealView.js';
+import mealDetailsView from '../views/mealDetailsView.js';
 
 const processPersonInfo = function (formData, typeOfUnit) {
   personModel.calculateStats(formData, typeOfUnit);
@@ -11,9 +12,17 @@ const processPersonInfo = function (formData, typeOfUnit) {
 };
 
 const processTypeOfDiet = async function (dietData) {
-  const recipes = await dietModel.getMeal(dietData);
-  console.log(recipes);
-  mealView.showMeals(recipes);
+  await dietModel.getMeals(dietData);
+  console.log(dietModel.state);
+  mealView.showMeals(dietModel.state.results);
+
+  mealView.addHandlerShowMealDetails(processMealDetails);
+};
+
+const processMealDetails = function (mealId) {
+  const selectedMeal = dietModel.getMealById(mealId);
+  console.log(selectedMeal);
+  mealDetailsView.showMealDetails(selectedMeal);
 };
 
 const init = function () {

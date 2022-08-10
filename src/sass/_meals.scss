@@ -1,5 +1,20 @@
 @use 'variables' as *;
 
+// Styling the wrapper
+
+.meals-wrapper {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+// Styling meals container
+
+#meals-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .section-meals {
   background: $color-background-secondary;
   padding: $space-3;
@@ -19,7 +34,7 @@
   }
 
   &__title {
-    font-size: $font-text-normal;
+    font-size: $font-text-tiny;
   }
 
   &__heading {
