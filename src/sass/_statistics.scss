@@ -3,6 +3,8 @@
 
 .section-statistics {
   background: $color-background;
+  // background-image: url('../../img/arrow.png');
+  background-repeat: no-repeat;
   padding: $space-3;
 }
 
@@ -30,4 +32,14 @@
   // position: relative;
   max-width: 30rem;
   //   margin: 4.8rem;
+}
+
+.cta {
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+
+  &__text {
+    font-size: $font-heading-secondary;
+  }
 }

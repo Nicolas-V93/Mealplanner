@@ -25,6 +25,10 @@ class FormView {
     this.#modal.close();
   }
 
+  hideCta() {
+    document.querySelector('.cta').style.display = 'none';
+  }
+
   #clear() {
     this.#form.innerHTML = '';
   }
@@ -97,7 +101,7 @@ class FormView {
           <input
             class="form__field"
             type="number"
-            min="0"
+            min="1"
             id="age"
             name="age"
             placeholder="Enter your current age"
@@ -110,7 +114,7 @@ class FormView {
           <input
             class="form__field"         
             type="number"
-            min="0"
+            min="1"
             id="height"
             name="height"
             placeholder="${unit === 'metric' ? 'Height in cm' : 'Feet'}"
@@ -127,7 +131,7 @@ class FormView {
           <input
             class="form__field"           
             type="number"
-            min="0"
+            min="1"
             id="weight"
             name="weight"
             placeholder="Weight in ${unit === 'metric' ? 'kg' : 'pounds'}"

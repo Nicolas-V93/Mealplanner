@@ -15,6 +15,8 @@ const processPersonInfo = function (formData, typeOfUnit) {
     personModel.calculateStats(formData, typeOfUnit);
     statsView.displayStats(personModel.state.stats);
     formView.closeModal();
+    formView.hideCta();
+    dietView.showDiets();
   }
 };
 

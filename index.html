@@ -130,15 +130,20 @@
       </dialog>
 
       <section id="stats" class="section-statistics">
-        <div>
-          <button type="submit" id="create-mealplan" class="btn btn--large">
-            Fill in the form
-          </button>
+        <div class="cta container">
+          <div><img src="/img/arrow_256.png" /></div>
+          <a
+            id="create-mealplan"
+            class="btn btn--large btn--orange"
+            href="#stats"
+            >Fill in the form</a
+          >
         </div>
+
         <div class="container grid grid__statistics">
           <div id="person-stats" class="grid grid__data statistics"></div>
 
-          <div class="diet-container">
+          <div class="diet-container hidden">
             <h4 class="heading-quaternary">Select your diet</h4>
             <div class="diet">
               <div class="diet__all" data-diet="all">
