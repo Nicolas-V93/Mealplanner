@@ -21,18 +21,23 @@ const processPersonInfo = function (formData, typeOfUnit) {
 };
 
 const processMealplanData = async function (dietData) {
-  console.log(dietData);
+  try {
+    console.log(dietData);
+    const { valid, error } = dietModel.validate(dietData);
 
-  const { valid, error } = dietModel.validate(dietData);
+    dietView.toggleError(error);
+    if (!valid) return;
 
-  dietView.toggleError(error);
-  if (!valid) return;
+    dietView.showSpinner();
+    await dietModel.getMeals(dietData);
+    dietView.hideSpinner();
+    console.log(dietModel.state);
+    mealView.showMeals(dietModel.state.results);
 
-  await dietModel.getMeals(dietData);
-  console.log(dietModel.state);
-  mealView.showMeals(dietModel.state.results);
-
-  mealView.addHandlerShowMealDetails(processMealDetails);
+    mealView.addHandlerShowMealDetails(processMealDetails);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const processMealDetails = function (mealId) {
