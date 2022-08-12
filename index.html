@@ -145,6 +145,7 @@
 
           <div class="diet-container hidden">
             <h4 class="heading-quaternary">Select your diet</h4>
+
             <div class="diet">
               <div class="diet__all" data-diet="all">
                 <i class="diet__icon fa-solid fa-infinity"></i>
@@ -175,6 +176,13 @@
                 <option value="5">5 meals</option>
                 <option value="6">6 meals</option>
               </select>
+              <a
+                id="diet-generate"
+                class="btn btn--small btn--orange"
+                style="float: right"
+                >Generate mealplan</a
+              >
+              <div id="diet-error" class="diet--error"></div>
             </div>
           </div>
         </div>

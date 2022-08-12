@@ -25,13 +25,20 @@
   align-items: center;
 }
 
-.diet__amountmeals {
-  display: flex;
-  margin-top: $space-0;
-}
+// .diet__amountmeals {
+//   display: flex;
+//   margin-top: $space-0;
+// }
 
 // toggle class when selecting a diet
 .diet--selected {
   background-color: $color-accent;
   border-radius: 60%;
+}
+
+.diet--error {
+  margin-bottom: 3.2rem;
+  font-size: $font-text-small;
+  font-weight: 700;
+  color: rgb(233, 1, 1);
 }

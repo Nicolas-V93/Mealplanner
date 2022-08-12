@@ -7,10 +7,10 @@ import mealView from '../views/mealView.js';
 import mealDetailsView from '../views/mealDetailsView.js';
 
 const processPersonInfo = function (formData, typeOfUnit) {
-  const result = personModel.validateForm(formData);
+  const { valid, error } = personModel.validateForm(formData);
 
-  if (!result.pass) {
-    formView.showErrorMessage(result.error);
+  if (!valid) {
+    formView.showErrorMessage(error);
   } else {
     personModel.calculateStats(formData, typeOfUnit);
     statsView.displayStats(personModel.state.stats);
@@ -20,7 +20,14 @@ const processPersonInfo = function (formData, typeOfUnit) {
   }
 };
 
-const processTypeOfDiet = async function (dietData) {
+const processMealplanData = async function (dietData) {
+  console.log(dietData);
+
+  const { valid, error } = dietModel.validate(dietData);
+
+  dietView.toggleError(error);
+  if (!valid) return;
+
   await dietModel.getMeals(dietData);
   console.log(dietModel.state);
   mealView.showMeals(dietModel.state.results);
@@ -30,13 +37,12 @@ const processTypeOfDiet = async function (dietData) {
 
 const processMealDetails = function (mealId) {
   const selectedMeal = dietModel.getMealById(mealId);
-  console.log(selectedMeal);
   mealDetailsView.showMealDetails(selectedMeal);
 };
 
 const init = function () {
   formView.addHandlerProcessInfo(processPersonInfo);
-  dietView.addHandlerSelectDiet(processTypeOfDiet);
+  dietView.addHandlerSelectMealplanData(processMealplanData);
 };
 
 init();

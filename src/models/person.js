@@ -26,11 +26,11 @@ class Person {
   validateForm(formData) {
     if (!validateInputs(formData)) {
       return {
-        pass: false,
+        valid: false,
         error: 'Age, height and weight must be higher than 0!',
       };
     }
-    return { pass: true };
+    return { valid: true };
   }
 
   calculateStats(formData, typeOfUnit) {
