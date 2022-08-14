@@ -31,8 +31,6 @@ const processMealplanData = async function (dietData) {
     await dietModel.getMeals(dietData);
     dietView.hideSpinner();
     mealView.showMeals(dietModel.state.results);
-
-    mealView.addHandlerShowMealDetails(processMealDetails);
   } catch (error) {
     console.log(error);
   }
@@ -44,17 +42,14 @@ const processMealDetails = function (mealId) {
 };
 
 const processServings = function (currentMeal, newServings) {
-  // hardcoded
-  console.log(newServings, currentMeal);
-  // const newServings = 9;
   dietModel.updateServings(currentMeal, newServings);
   mealDetailsView.showMealDetails(currentMeal);
-  // console.log(selectedMeal);
 };
 
 const init = function () {
   formView.addHandlerProcessInfo(processPersonInfo);
   dietView.addHandlerSelectMealplanData(processMealplanData);
+  mealView.addHandlerShowMealDetails(processMealDetails);
   mealDetailsView.addHandlerUpdateServings(processServings);
 };
 

@@ -1,10 +1,5 @@
 class MealView {
   #parentElement = document.querySelector('#meals-container');
-  id;
-
-  constructor() {
-    this.id = 0;
-  }
 
   #createMealContainer(meal) {
     const markup = this.#generateMarkup(meal);
@@ -17,21 +12,12 @@ class MealView {
   }
 
   addHandlerShowMealDetails(handler) {
-    const all = document.querySelectorAll('#meals-container > div');
-    all.forEach(el =>
-      el.addEventListener('click', function () {
-        handler(this.dataset.id);
-      })
-    );
-  }
+    this.#parentElement.addEventListener('click', function (e) {
+      const meal = e.target.closest('.meal');
 
-  getMealId() {
-    console.log(this.dataset.id);
-    return this.dataset.id;
-    // console.log(this.dataset.id);
-    // const id = this.dataset.id;
-    // const id = e.target.closest('.meal').dataset.id;
-    // this.id = id;
+      if (!meal) return;
+      handler(meal.dataset.id);
+    });
   }
 
   #generateMarkup(meal) {
