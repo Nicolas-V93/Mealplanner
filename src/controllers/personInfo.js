@@ -22,7 +22,6 @@ const processPersonInfo = function (formData, typeOfUnit) {
 
 const processMealplanData = async function (dietData) {
   try {
-    console.log(dietData);
     const { valid, error } = dietModel.validate(dietData);
 
     dietView.toggleError(error);
@@ -31,7 +30,6 @@ const processMealplanData = async function (dietData) {
     dietView.showSpinner();
     await dietModel.getMeals(dietData);
     dietView.hideSpinner();
-    console.log(dietModel.state);
     mealView.showMeals(dietModel.state.results);
 
     mealView.addHandlerShowMealDetails(processMealDetails);
@@ -45,9 +43,19 @@ const processMealDetails = function (mealId) {
   mealDetailsView.showMealDetails(selectedMeal);
 };
 
+const processServings = function (currentMeal, newServings) {
+  // hardcoded
+  console.log(newServings, currentMeal);
+  // const newServings = 9;
+  dietModel.updateServings(currentMeal, newServings);
+  mealDetailsView.showMealDetails(currentMeal);
+  // console.log(selectedMeal);
+};
+
 const init = function () {
   formView.addHandlerProcessInfo(processPersonInfo);
   dietView.addHandlerSelectMealplanData(processMealplanData);
+  mealDetailsView.addHandlerUpdateServings(processServings);
 };
 
 init();

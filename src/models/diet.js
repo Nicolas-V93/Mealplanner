@@ -44,6 +44,13 @@ export const validate = function (data) {
   return { valid: true };
 };
 
+export const updateServings = function (currentMeal, newServings) {
+  currentMeal.extendedIngredients.forEach(ing => {
+    ing.amount = (ing.amount * newServings) / currentMeal.servings;
+  });
+  currentMeal.servings = newServings;
+};
+
 // Private functions
 
 const createMealObject = function (data) {

@@ -26,7 +26,6 @@ class DietView {
   }
 
   toggleError(error) {
-    console.log(error);
     const errorEl = document.querySelector('#diet-error');
     errorEl.innerText = error || '';
   }

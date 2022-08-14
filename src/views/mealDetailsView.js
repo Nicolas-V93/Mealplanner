@@ -1,10 +1,26 @@
+import { MAX_SERVING } from '../config';
+
 class mealDetailsView {
   #parentElement = document.querySelector('#meal-details');
+  #currentMeal;
 
   showMealDetails(selectedMeal) {
     this.#clear();
+    this.#currentMeal = selectedMeal;
     const markup = this.#generateMarkup(selectedMeal);
     this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  addHandlerUpdateServings(handler) {
+    this.#parentElement.addEventListener('click', e => {
+      const btn = e.target.closest('.btn--update-servings');
+      if (!btn) return;
+
+      const { update } = btn.dataset;
+
+      if (update > 0 && update <= MAX_SERVING)
+        handler(this.#currentMeal, +update);
+    });
   }
 
   #generateMarkup(meal) {
@@ -24,6 +40,12 @@ class mealDetailsView {
               <div class="details__info__item">
                 <i class="details__icon fa-solid fa-utensils"></i>
                 <p>${meal.servings} servings</p>
+                <button class="btn btn--update-servings" data-update=${
+                  meal.servings - 1
+                }><i class="fa fa-minus-circle" aria-hidden="true"></i></button>
+                <button class="btn btn--update-servings" data-update=${
+                  meal.servings + 1
+                }><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
               </div>
             </div>
   
@@ -67,13 +89,6 @@ class mealDetailsView {
 
   #generateMarkupIngredient(ing) {
     return `<div class="details__ingredient">
-              <div class="details__ingredient__image-container">
-                    <img
-                      class="details__img"
-                      src="https://spoonacular.com/cdn/ingredients_250x250/${ing.image}"
-                      alt="${ing.name}"
-                    />
-              </div>
               <div class="details__ingredient__description">${ing.name}</div>
               <div class="details__ingredient__unit">${ing.measures.metric.amount}</div>
             </div>`;

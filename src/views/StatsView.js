@@ -36,8 +36,8 @@ class StatsView {
           {
             label: 'macros',
             data: [macros.carbs, macros.proteins, macros.fats],
-            backgroundColor: ['#f1f5f9', '#e2e8f0', '#cbd5e1'],
-            borderColor: ['#f1f5f9', '#e2e8f0', '#cbd5e1'],
+            backgroundColor: ['#94B49F', '#FCF8E8', '#ECB390'],
+            borderColor: ['#94B49F', '#FCF8E8', '#ECB390'],
             borderWidth: 1,
           },
         ],
