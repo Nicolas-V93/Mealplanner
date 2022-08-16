@@ -1,4 +1,5 @@
 import { MAX_SERVING } from '../config';
+import Fraction from 'fraction.js';
 
 class mealDetailsView {
   #parentElement = document.querySelector('#meal-details');
@@ -7,6 +8,8 @@ class mealDetailsView {
   showMealDetails(selectedMeal) {
     this.#clear();
     this.#currentMeal = selectedMeal;
+    console.log(this.#currentMeal);
+    console.log(selectedMeal);
     const markup = this.#generateMarkup(selectedMeal);
     this.#parentElement.insertAdjacentHTML('afterbegin', markup);
   }
@@ -90,7 +93,9 @@ class mealDetailsView {
   #generateMarkupIngredient(ing) {
     return `<div class="details__ingredient">
               <div class="details__ingredient__description">${ing.name}</div>
-              <div class="details__ingredient__unit">${ing.measures.metric.amount}</div>
+              <div class="details__ingredient__unit">${new Fraction(
+                ing.measures.metric.amount
+              ).toFraction(true)} ${ing.measures.metric.unitShort}</div>
             </div>`;
   }
 

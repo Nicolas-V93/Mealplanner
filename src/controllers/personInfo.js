@@ -43,6 +43,7 @@ const processMealDetails = function (mealId) {
 
 const processServings = function (currentMeal, newServings) {
   dietModel.updateServings(currentMeal, newServings);
+
   mealDetailsView.showMealDetails(currentMeal);
 };
 

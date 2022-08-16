@@ -33,12 +33,10 @@ export const getMealById = function (mealId) {
 
 export const validate = function (data) {
   if (!isFinite(data.amountOfMeals)) {
-    console.log('not a number');
     return { valid: false, error: 'Select a valid amount' };
   }
 
   if (!data.diet) {
-    console.log('not diet selected');
     return { valid: false, error: 'Please select a diet!' };
   }
   return { valid: true };
@@ -46,7 +44,8 @@ export const validate = function (data) {
 
 export const updateServings = function (currentMeal, newServings) {
   currentMeal.extendedIngredients.forEach(ing => {
-    ing.amount = (ing.amount * newServings) / currentMeal.servings;
+    ing.measures.metric.amount =
+      (ing.amount * newServings) / currentMeal.servings;
   });
   currentMeal.servings = newServings;
 };
