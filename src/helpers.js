@@ -17,6 +17,10 @@ export const validateInputs = function (fields) {
   return [age, height, weight].every(isValid);
 };
 
+export const roundHalf = function (num) {
+  return Math.round(num * 2) / 2;
+};
+
 const isValid = function (value) {
   return value !== '' && value > 0;
 };

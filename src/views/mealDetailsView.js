@@ -1,5 +1,6 @@
 import { MAX_SERVING } from '../config';
 import Fraction from 'fraction.js';
+import { roundHalf } from '../helpers';
 
 class mealDetailsView {
   #parentElement = document.querySelector('#meal-details');
@@ -9,7 +10,6 @@ class mealDetailsView {
     this.#clear();
     this.#currentMeal = selectedMeal;
     console.log(this.#currentMeal);
-    console.log(selectedMeal);
     const markup = this.#generateMarkup(selectedMeal);
     this.#parentElement.insertAdjacentHTML('afterbegin', markup);
   }
@@ -93,10 +93,22 @@ class mealDetailsView {
   #generateMarkupIngredient(ing) {
     return `<div class="details__ingredient">
               <div class="details__ingredient__description">${ing.name}</div>
-              <div class="details__ingredient__unit">${new Fraction(
-                ing.measures.metric.amount
-              ).toFraction(true)} ${ing.measures.metric.unitShort}</div>
+              <div class="details__ingredient__unit"> 
+              ${this.#showMetric(ing)} ${ing.measures.metric.unitShort}
+              </div>
             </div>`;
+  }
+
+  #showMetric(ing) {
+    if (
+      ['tsps', 'tsp', 'Tbsps', 'Tbsp'].some(
+        unit => unit === ing.measures.metric.unitShort
+      )
+    ) {
+      return new Fraction(ing.measures.metric.amount).toFraction(true);
+    }
+
+    return Math.round(ing.measures.metric.amount);
   }
 
   #clear() {

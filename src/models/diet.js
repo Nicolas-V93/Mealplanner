@@ -45,7 +45,7 @@ export const validate = function (data) {
 export const updateServings = function (currentMeal, newServings) {
   currentMeal.extendedIngredients.forEach(ing => {
     ing.measures.metric.amount =
-      (ing.amount * newServings) / currentMeal.servings;
+      (ing.measures.metric.amount * newServings) / currentMeal.servings;
   });
   currentMeal.servings = newServings;
 };

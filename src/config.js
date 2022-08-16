@@ -12,4 +12,4 @@ export const INCH_FACTOR = 2.54;
 
 export const API_KEY = '';
 
-export const MAX_SERVING = 30;
+export const MAX_SERVING = 40;
