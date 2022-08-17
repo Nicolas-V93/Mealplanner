@@ -12,7 +12,6 @@ class mealDetailsView {
     console.log(this.#currentMeal);
     const markup = this.#generateMarkup(selectedMeal, this.#unitType);
     this.#parentElement.insertAdjacentHTML('afterbegin', markup);
-    this.#addHandlerUnit();
   }
 
   addHandlerUpdateServings(handler) {
@@ -27,10 +26,13 @@ class mealDetailsView {
     });
   }
 
-  #addHandlerUnit() {
-    document
-      .querySelector('.details__switch-button-checkbox')
-      .addEventListener('click', this.#toggleIngredients.bind(this));
+  addHandlerToggleUnit() {
+    this.#parentElement.addEventListener('click', e => {
+      const slider = e.target.closest('.details__switch-button-checkbox');
+      if (!slider) return;
+
+      this.#toggleIngredients(e);
+    });
   }
 
   #toggleIngredients(e) {

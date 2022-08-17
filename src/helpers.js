@@ -1,5 +1,17 @@
 import { LBS_FACTOR, FEET_TO_INCH_MULTIPLIER, INCH_FACTOR } from './config';
 
+export const getJSON = async function (url) {
+  try {
+    const res = await fetch(url);
+    const data = res.json();
+
+    if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
+
 export const convertWeightToMetric = function (weightInLbs) {
   return +(weightInLbs / LBS_FACTOR).toFixed(2);
 };

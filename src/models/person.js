@@ -43,10 +43,6 @@ class Person {
       delete formData.heightInch;
     }
 
-    // console.log(formData);
-
-    // if (!validateForm(formData)) throw new Error('Form is not valid');
-
     this.state.stats.bmr = this.#getBMR(formData);
     this.state.stats.tdee = this.#getTDEE(
       this.state.stats.bmr,

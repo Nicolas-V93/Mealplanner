@@ -1,4 +1,5 @@
 import { API_KEY } from '../config.js';
+import { getJSON } from '../helpers.js';
 
 export const state = {
   results: [],
@@ -9,18 +10,16 @@ export const getMeals = async function (dietData) {
   const tags = diet === 'all' ? '' : `&tags=${diet}`;
 
   try {
-    const res = await fetch(
+    const { recipes } = await getJSON(
       `https://api.spoonacular.com/recipes/random?number=${amountOfMeals}${tags}&apiKey=${API_KEY}`
     );
 
-    const { recipes } = await res.json();
     const mealIds = recipes.map(r => r.id);
 
-    const res2 = await fetch(
+    const data = await getJSON(
       `https://api.spoonacular.com/recipes/informationBulk?ids=${mealIds.join()}&includeNutrition=true&apiKey=${API_KEY}`
     );
 
-    const data = await res2.json();
     createMealObject(data);
   } catch (err) {
     console.error(`${err} 💥💥💥💥`);
@@ -49,6 +48,7 @@ export const updateServings = function (currentMeal, newServings) {
     ing.measures.us.amount =
       (ing.measures.us.amount * newServings) / currentMeal.servings;
   });
+
   currentMeal.servings = newServings;
 };
 

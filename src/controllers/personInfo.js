@@ -42,7 +42,7 @@ const processMealDetails = function (mealId) {
 };
 
 const processServings = function (currentMeal, newServings) {
-  console.log(currentMeal);
+  // console.log(currentMeal);
   dietModel.updateServings(currentMeal, newServings);
 
   mealDetailsView.showMealDetails(currentMeal);
@@ -53,6 +53,7 @@ const init = function () {
   dietView.addHandlerSelectMealplanData(processMealplanData);
   mealView.addHandlerShowMealDetails(processMealDetails);
   mealDetailsView.addHandlerUpdateServings(processServings);
+  mealDetailsView.addHandlerToggleUnit();
 };
 
 init();
