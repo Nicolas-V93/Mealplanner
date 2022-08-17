@@ -34,11 +34,8 @@ class FormView {
   }
 
   #toggleUnit() {
-    if (this.#form.dataset.unit !== 'imperial') {
-      this.#form.dataset.unit = 'imperial';
-    } else {
-      this.#form.dataset.unit = 'metric';
-    }
+    this.#form.dataset.unit =
+      this.#form.dataset.unit === 'imperial' ? 'metric' : 'imperial';
   }
 
   #addHandlerShowForm() {

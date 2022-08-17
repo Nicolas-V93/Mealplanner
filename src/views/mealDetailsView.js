@@ -1,17 +1,18 @@
 import { MAX_SERVING } from '../config';
 import Fraction from 'fraction.js';
-import { roundHalf } from '../helpers';
 
 class mealDetailsView {
   #parentElement = document.querySelector('#meal-details');
   #currentMeal;
+  #unitType = 'metric';
 
   showMealDetails(selectedMeal) {
     this.#clear();
     this.#currentMeal = selectedMeal;
     console.log(this.#currentMeal);
-    const markup = this.#generateMarkup(selectedMeal);
+    const markup = this.#generateMarkup(selectedMeal, this.#unitType);
     this.#parentElement.insertAdjacentHTML('afterbegin', markup);
+    this.#addHandlerUnit();
   }
 
   addHandlerUpdateServings(handler) {
@@ -26,7 +27,34 @@ class mealDetailsView {
     });
   }
 
-  #generateMarkup(meal) {
+  #addHandlerUnit() {
+    document
+      .querySelector('.details__switch-button-checkbox')
+      .addEventListener('click', this.#toggleIngredients.bind(this));
+  }
+
+  #toggleIngredients(e) {
+    const currentType = e.target.dataset.unit === 'metric' ? 'us' : 'metric';
+    e.target.dataset.unit = currentType;
+
+    if (currentType === 'metric') e.target.removeAttribute('checked');
+    else e.target.setAttribute('checked', 'checked');
+
+    this.#unitType = currentType;
+
+    const ingredientsContainer = document.querySelector(
+      '.details__ingredients-all'
+    );
+    ingredientsContainer.innerHTML = '';
+
+    const markup = this.#currentMeal.extendedIngredients
+      .map(ing => this.#generateMarkupIngredient(ing, this.#unitType))
+      .join('');
+
+    ingredientsContainer.insertAdjacentHTML('afterbegin', markup);
+  }
+
+  #generateMarkup(meal, unit = 'metric') {
     return `<div class="details__image-container">
               <img
                 class="details__img"
@@ -52,9 +80,19 @@ class mealDetailsView {
               </div>
             </div>
   
+
+            <div class="details__switch-button">
+                <input class="details__switch-button-checkbox" type="checkbox" data-unit=${unit} ${
+      unit === 'us' ? 'checked' : ''
+    }/>
+                <label class="details__switch-button-label" for="">
+                <span class="details__switch-button-label-span">Metric</span>
+                </label>
+            </div>
+
             <div class="details__ingredients-all">
               ${meal.extendedIngredients
-                .map(ing => this.#generateMarkupIngredient(ing))
+                .map(ing => this.#generateMarkupIngredient(ing, unit))
                 .join('')}
             </div>
   
@@ -90,25 +128,27 @@ class mealDetailsView {
             </div>`;
   }
 
-  #generateMarkupIngredient(ing) {
+  #generateMarkupIngredient(ing, type = 'metric') {
     return `<div class="details__ingredient">
               <div class="details__ingredient__description">${ing.name}</div>
-              <div class="details__ingredient__unit"> 
-              ${this.#showMetric(ing)} ${ing.measures.metric.unitShort}
+              <div class="details__ingredient__unit">
+              ${this.#optimizeIngredient(ing, type)} ${
+      ing.measures[type].unitShort
+    }
               </div>
             </div>`;
   }
 
-  #showMetric(ing) {
+  #optimizeIngredient(ing, type) {
     if (
       ['tsps', 'tsp', 'Tbsps', 'Tbsp'].some(
-        unit => unit === ing.measures.metric.unitShort
+        unit => unit === ing.measures[type].unitShort
       )
     ) {
-      return new Fraction(ing.measures.metric.amount).toFraction(true);
+      return new Fraction(ing.measures[type].amount).toFraction(true);
     }
 
-    return Math.round(ing.measures.metric.amount);
+    return Math.round(ing.measures[type].amount);
   }
 
   #clear() {

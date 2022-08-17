@@ -46,6 +46,8 @@ export const updateServings = function (currentMeal, newServings) {
   currentMeal.extendedIngredients.forEach(ing => {
     ing.measures.metric.amount =
       (ing.measures.metric.amount * newServings) / currentMeal.servings;
+    ing.measures.us.amount =
+      (ing.measures.us.amount * newServings) / currentMeal.servings;
   });
   currentMeal.servings = newServings;
 };
