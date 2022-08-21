@@ -42,15 +42,25 @@ const processMealDetails = function (mealId) {
 };
 
 const processServings = function (currentMeal, newServings) {
-  // console.log(currentMeal);
   dietModel.updateServings(currentMeal, newServings);
-
   mealDetailsView.showMealDetails(currentMeal);
+};
+
+const processRefreshRecipe = async function (mealIdToReplace) {
+  try {
+    const newRecipe = await dietModel.getNewRecipe();
+    dietModel.replaceRecipe(newRecipe, mealIdToReplace);
+    mealView.showMeals(dietModel.state.results);
+    mealDetailsView.showMealDetails(newRecipe);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const init = function () {
   formView.addHandlerProcessInfo(processPersonInfo);
   dietView.addHandlerSelectMealplanData(processMealplanData);
+  mealView.addHandlerRefreshRecipe(processRefreshRecipe);
   mealView.addHandlerShowMealDetails(processMealDetails);
   mealDetailsView.addHandlerUpdateServings(processServings);
   mealDetailsView.addHandlerToggleUnit();

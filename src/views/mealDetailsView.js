@@ -9,7 +9,6 @@ class mealDetailsView {
   showMealDetails(selectedMeal) {
     this.#clear();
     this.#currentMeal = selectedMeal;
-    console.log(this.#currentMeal);
     const markup = this.#generateMarkup(selectedMeal, this.#unitType);
     this.#parentElement.insertAdjacentHTML('afterbegin', markup);
   }
@@ -82,7 +81,6 @@ class mealDetailsView {
               </div>
             </div>
   
-
             <div class="details__switch-button">
                 <input class="details__switch-button-checkbox" type="checkbox" data-unit=${unit} ${
       unit === 'us' ? 'checked' : ''

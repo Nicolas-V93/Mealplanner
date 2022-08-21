@@ -3,24 +3,29 @@ import { getJSON } from '../helpers.js';
 
 export const state = {
   results: [],
+  amountOfMeals: 0,
+  diet: '',
 };
 
 export const getMeals = async function (dietData) {
   const { amountOfMeals, diet } = dietData;
-  const tags = diet === 'all' ? '' : `&tags=${diet}`;
+
+  state.results = [];
+  state.amountOfMeals = amountOfMeals;
+  state.diet = diet;
+
+  const { recipes } = await getRandomRecipes(state.amountOfMeals);
+  const mealIds = recipes.map(r => r.id);
 
   try {
-    const { recipes } = await getJSON(
-      `https://api.spoonacular.com/recipes/random?number=${amountOfMeals}${tags}&apiKey=${API_KEY}`
-    );
-
-    const mealIds = recipes.map(r => r.id);
-
     const data = await getJSON(
       `https://api.spoonacular.com/recipes/informationBulk?ids=${mealIds.join()}&includeNutrition=true&apiKey=${API_KEY}`
     );
 
-    createMealObject(data);
+    data.forEach(meal => {
+      const obj = createMealObject(meal);
+      state.results.push(obj);
+    });
   } catch (err) {
     console.error(`${err} 💥💥💥💥`);
   }
@@ -52,23 +57,50 @@ export const updateServings = function (currentMeal, newServings) {
   currentMeal.servings = newServings;
 };
 
-// Private functions
+export const getNewRecipe = async function () {
+  try {
+    const { recipes } = await getRandomRecipes(1);
 
-const createMealObject = function (data) {
-  state.results = [];
+    const newMealWithNutrition = await getJSON(
+      `https://api.spoonacular.com/recipes/${
+        recipes.at(0).id
+      }/information?includeNutrition=true&apiKey=${API_KEY}`
+    );
 
-  data.forEach(meal => {
-    const obj = {
-      id: meal.id,
-      title: meal.title,
-      image: meal.image,
-      readyInMinutes: meal.readyInMinutes,
-      servings: meal.servings,
-      nutrients: meal.nutrition.nutrients,
-      extendedIngredients: meal.extendedIngredients,
-      instructions: meal.instructions,
-    };
+    return createMealObject(newMealWithNutrition);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-    state.results.push(obj);
-  });
+export const replaceRecipe = function (newRecipe, mealId) {
+  const index = state.results.findIndex(meal => meal.id === +mealId);
+  state.results.splice(index, 1, newRecipe);
+};
+
+// Private
+
+const createMealObject = function (meal) {
+  return {
+    id: meal.id,
+    title: meal.title,
+    image: meal.image,
+    readyInMinutes: meal.readyInMinutes,
+    servings: meal.servings,
+    nutrients: meal.nutrition.nutrients,
+    extendedIngredients: meal.extendedIngredients,
+    instructions: meal.instructions,
+  };
+};
+
+const getRandomRecipes = async function (amount) {
+  try {
+    const tags = state.diet === 'all' ? '' : `&tags=${state.diet}`;
+
+    return await getJSON(
+      `https://api.spoonacular.com/recipes/random?number=${amount}${tags}&apiKey=${API_KEY}`
+    );
+  } catch (err) {
+    console.log(err);
+  }
 };
