@@ -13,3 +13,4 @@ export const INCH_FACTOR = 2.54;
 export const API_KEY = '';
 
 export const MAX_SERVING = 99;
+export const MAX_MEALS = 6;

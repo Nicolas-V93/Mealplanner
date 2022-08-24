@@ -46,9 +46,9 @@ const processServings = function (currentMeal, newServings) {
   mealDetailsView.showMealDetails(currentMeal);
 };
 
-const processRefreshRecipe = async function (mealIdToReplace) {
+const processNewRecipe = async function (mealIdToReplace, dishType) {
   try {
-    const newRecipe = await dietModel.getNewRecipe();
+    const newRecipe = await dietModel.getNewRecipe(dishType);
     dietModel.replaceRecipe(newRecipe, mealIdToReplace);
     mealView.showMeals(dietModel.state.results);
     mealDetailsView.showMealDetails(newRecipe);
@@ -60,7 +60,7 @@ const processRefreshRecipe = async function (mealIdToReplace) {
 const init = function () {
   formView.addHandlerProcessInfo(processPersonInfo);
   dietView.addHandlerSelectMealplanData(processMealplanData);
-  mealView.addHandlerRefreshRecipe(processRefreshRecipe);
+  mealView.addHandlerRefreshRecipe(processNewRecipe);
   mealView.addHandlerShowMealDetails(processMealDetails);
   mealDetailsView.addHandlerUpdateServings(processServings);
   mealDetailsView.addHandlerToggleUnit();
