@@ -46,11 +46,16 @@ class MealView {
                   <h2 class="meal__title">
                     ${meal.title} 
                   </h2>
-                  <div class="meal__calories">${
-                    meal.nutrients[0].amount
-                  } Calories</div>
-                  <i class="meal__icon fa fa-refresh fa-lg" aria-hidden="true"></i>
+                  <div class="meal__calories">${Math.round(
+                    meal.nutrients.find(n => n.name === 'Calories').total.amount
+                  )} Calories</div>
+                  <i class="meal__icon fa fa-refresh fa-lg" aria-hidden="true"></i>             
+                  <div>${
+                    meal.nutrients.find(n => n.name === 'Calories').total
+                      .servings
+                  } servings</div>
                 </div>
+                
               </div>
             </div>`;
   }

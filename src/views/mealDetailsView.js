@@ -99,27 +99,28 @@ class mealDetailsView {
             <div class="details__nutrients">
               <div class="details__nutrients__item">
                 <div class="details__nutrients__name">Calories</div>
-                <div class="details__nutrients__values">${
-                  meal.nutrients.find(n => n.name === 'Calories').amount
-                }</div>
+                <div class="details__nutrients__values">${Math.round(
+                  meal.nutrients.find(n => n.name === 'Calories').perServing
+                )} g</div>
               </div>
               <div class="details__nutrients__item">
                 <div class="details__nutrients__name">Carbs</div>
-                <div class="details__nutrients__values">${
-                  meal.nutrients.find(n => n.name === 'Carbohydrates').amount
-                }</div>
+                <div class="details__nutrients__values">${Math.round(
+                  meal.nutrients.find(n => n.name === 'Carbohydrates')
+                    .perServing
+                )} g</div>
               </div>
               <div class="details__nutrients__item">
                 <div class="details__nutrients__name">Protein</div>
-                <div class="details__nutrients__values">${
-                  meal.nutrients.find(n => n.name === 'Protein').amount
-                }</div>
+                <div class="details__nutrients__values">${Math.round(
+                  meal.nutrients.find(n => n.name === 'Protein').perServing
+                )} g</div>
               </div>
               <div class="details__nutrients__item">
                 <div class="details__nutrients__name">Fat</div>
-                <div class="details__nutrients__values">${
-                  meal.nutrients.find(n => n.name === 'Fat').amount
-                }</div>
+                <div class="details__nutrients__values">${Math.round(
+                  meal.nutrients.find(n => n.name === 'Fat').perServing
+                )} g</div>
               </div>
             </div>
   

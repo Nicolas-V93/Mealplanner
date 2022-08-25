@@ -1,10 +1,11 @@
 import { API_KEY, MAX_MEALS } from '../config.js';
-import { getJSON } from '../helpers.js';
+import { getJSON, roundHalf } from '../helpers.js';
 
 export const state = {
   results: [],
   amountOfMeals: 0,
   diet: '',
+  caloriesPerMeal: 0,
 };
 
 const mealTypes = [
@@ -14,12 +15,13 @@ const mealTypes = [
   { snack: ['snack'] },
 ];
 
-export const getMeals = async function (dietData) {
+export const getMeals = async function (dietData, goalTDEE) {
   const { amountOfMeals, diet } = dietData;
 
   state.results = [];
   state.amountOfMeals = amountOfMeals;
   state.diet = diet;
+  state.caloriesPerMeal = goalTDEE / state.amountOfMeals;
 
   const mealIds = await retrieveMealIds();
 
@@ -33,11 +35,13 @@ export const getMeals = async function (dietData) {
       const obj = createMealObject(meal, dishType);
       state.results.push(obj);
     });
+
+    console.log(state.results);
+
+    // calculateNutritionDataPerMeal(goalTDEE);
   } catch (err) {
     console.error(`${err} 💥💥💥💥`);
   }
-
-  console.log(state.results);
 };
 
 export const getMealById = function (mealId) {
@@ -115,19 +119,51 @@ const getMealByDishType = async function (dishType) {
   return await getRandomRecipes(1, values[randomNum]);
 };
 
-const createMealObject = function (meal, dishType) {
-  return {
+function createMealObject(meal, dishType) {
+  const calories = meal.nutrition.nutrients.find(n => n.name === 'Calories');
+  const fats = meal.nutrition.nutrients.find(n => n.name === 'Fat');
+  const carbs = meal.nutrition.nutrients.find(n => n.name === 'Carbohydrates');
+  const protein = meal.nutrition.nutrients.find(n => n.name === 'Protein');
+
+  const obj = {
     id: meal.id,
     dishType,
     title: meal.title,
     image: meal.image,
     readyInMinutes: meal.readyInMinutes,
     servings: meal.servings,
-    nutrients: meal.nutrition.nutrients,
+    nutrients: [
+      {
+        name: calories.name,
+        perServing: calories.amount,
+        total: calculateTotal(calories.amount, true),
+        unit: calories.unit,
+      },
+      {
+        name: fats.name,
+        perServing: fats.amount,
+        total: calculateTotal(fats.amount),
+        unit: fats.unit,
+      },
+      {
+        name: carbs.name,
+        perServing: carbs.amount,
+        total: calculateTotal(carbs.amount),
+        unit: carbs.unit,
+      },
+      {
+        name: protein.name,
+        perServing: protein.amount,
+        total: calculateTotal(protein.amount),
+        unit: protein.unit,
+      },
+    ],
     extendedIngredients: meal.extendedIngredients,
     instructions: meal.instructions,
   };
-};
+
+  return obj;
+}
 
 const getRandomRecipes = async function (amount, dishType) {
   try {
@@ -142,4 +178,12 @@ const getRandomRecipes = async function (amount, dishType) {
   } catch (err) {
     console.log(err);
   }
+};
+
+const calculateTotal = function (amountPerServing, isCalories = false) {
+  const servings = roundHalf(state.caloriesPerMeal / amountPerServing);
+  const amount = (servings * amountPerServing).toFixed(2);
+
+  if (!isCalories) return { amount };
+  return { amount, servings };
 };

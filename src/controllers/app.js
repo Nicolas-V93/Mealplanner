@@ -12,6 +12,7 @@ const processPersonInfo = function (formData, typeOfUnit) {
   if (!valid) {
     formView.showErrorMessage(error);
   } else {
+    console.log(personModel.state.stats);
     personModel.calculateStats(formData, typeOfUnit);
     statsView.displayStats(personModel.state.stats);
     formView.closeModal();
@@ -28,7 +29,7 @@ const processMealplanData = async function (dietData) {
     if (!valid) return;
 
     dietView.showSpinner();
-    await dietModel.getMeals(dietData);
+    await dietModel.getMeals(dietData, personModel.state.stats.goalTDEE);
     dietView.hideSpinner();
     mealView.showMeals(dietModel.state.results);
   } catch (error) {
