@@ -29,7 +29,7 @@ export const getMeals = async function (dietData) {
     );
 
     data.forEach((meal, index) => {
-      const dishType = Object.keys(mealTypes[index]).pop();
+      const dishType = Object.keys(mealTypes[index] || mealTypes.at(-1)).pop();
       const obj = createMealObject(meal, dishType);
       state.results.push(obj);
     });
@@ -87,13 +87,13 @@ export const replaceRecipe = function (newRecipe, mealId) {
   state.results.splice(index, 1, newRecipe);
 };
 
-// Private
+// Private functions
 
 const retrieveMealIds = async function () {
   const mealIds = [];
 
   for (let i = 0; i < state.amountOfMeals; i++) {
-    let [dishType] = Object.keys(mealTypes[i]);
+    let [dishType] = Object.keys(mealTypes[i] || mealTypes.at(-1));
     const { recipes } = await getMealByDishType(dishType);
     mealIds.push(recipes.at(0).id);
   }
