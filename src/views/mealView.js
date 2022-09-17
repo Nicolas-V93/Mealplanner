@@ -8,6 +8,7 @@ class MealView {
 
   showMeals(meals) {
     this.#clear();
+    document.querySelector('.section-meals').classList.remove('hidden');
     meals.forEach(meal => this.#createMealContainer(meal));
   }
 
@@ -33,31 +34,38 @@ class MealView {
 
   #generateMarkup(meal) {
     return `<div class="meal" data-id=${meal.id} data-type=${meal.dishType}>
-            <h2>${meal.dishType[0].toUpperCase() + meal.dishType.slice(1)}</h2>
-              <div class="flex-container">
-                <div class="meal__image-container">
-                  <img
-                  class="meal__image"
-                  src="${meal.image}"
-                  alt="${meal.title}"
-                  />
-                </div>
-                <div class="meal__heading">
-                  <h2 class="meal__title">
-                    ${meal.title} 
-                  </h2>
-                  <div class="meal__calories">${Math.round(
-                    meal.nutrients.find(n => n.name === 'Calories').total.amount
-                  )} Calories</div>
-                  <i class="meal__icon fa fa-refresh fa-lg" aria-hidden="true"></i>             
-                  <div>${
-                    meal.nutrients.find(n => n.name === 'Calories').total
-                      .servings
-                  } servings</div>
-                </div>
-                
+            <p class="meal__category">${
+              meal.dishType[0].toUpperCase() + meal.dishType.slice(1)
+            }</p>
+            <div class="meal__image-container">
+              <img
+                class="meal__image"
+                src="${meal.image}"
+                alt="${meal.title}"
+              />
+            </div>
+            <div class="meal__content">
+              <div class="meal__heading">
+                <p>${meal.title} </p>
+                <i
+                  class="meal__icon fa fa-refresh fa-lg"
+                  aria-hidden="true"
+                ></i>
               </div>
-            </div>`;
+              <div class="meal_data">
+                <p class="tag">${Math.round(
+                  meal.nutrients.find(n => n.name === 'Calories').total.amount
+                )} Calories                 
+                </p>
+                <p class="meal__serving">(${Math.round(
+                  meal.nutrients.find(n => n.name === 'Calories').perServing
+                )} kcal/serving)</p>
+                <p>${
+                  meal.nutrients.find(n => n.name === 'Calories').total.servings
+                } servings</p>
+              </div>
+            </div>
+          </div>`;
   }
 
   #clear() {

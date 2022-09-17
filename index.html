@@ -22,151 +22,168 @@
   </head>
   <body>
     <header class="header">
-      <a href="#">
-        <img
-          class="header__banner"
-          alt="Vitality logo"
-          src="img/vitality-banner.png"
-        />
-      </a>
-      <!-- <nav class="nav">
-        <button type="button" class="btn btn--large btn--orange">
-          View mealplan
-        </button>
-      </nav> -->
+      <div class="container">
+        <a href="#">
+          <img
+            class="header__banner"
+            alt="Vitality logo"
+            src="img/vitality-banner.png"
+          />
+        </a>
+      </div>
     </header>
-
     <main>
       <section class="section-hero">
-        <div class="hero">
-          <div class="hero__text-box">
+        <div class="hero | container">
+          <div class="hero__content | flow">
             <h1 class="heading-primary">
-              Create a meal plan in
-              <span class="heading-primary__mark">3 simple steps!</span>
+              Create a meal plan in 3 simple steps!
             </h1>
             <p class="hero__description">
               Eating healthy has never been easier. We create a personalized
               mealplan for the week based on your daily caloric needs.
             </p>
-            <a class="btn btn--large btn--full" href="#stats">Get started</a>
-            <a class="btn btn--large btn--outline" href="#how"
-              >Learn more &darr;</a
-            >
+            <div class="hero__buttons">
+              <a href="#stats" class="btn btn--primary">Get started</a>
+              <a href="#step" class="btn btn--secondary">Learn more</a>
+            </div>
             <div class="hero__customers">
-              <img src="img/customer-1.jpg" alt="Customer Photo" />
-              <img src="img/customer-2.jpg" alt="Customer Photo" />
-              <img src="img/customer-3.jpg" alt="Customer Photo" />
-              <img src="img/customer-4.jpg" alt="Customer Photo" />
-              <img src="img/customer-5.jpg" alt="Customer Photo" />
-              <img src="img/customer-6.jpg" alt="Customer Photo" />
-              <p><span class="hero__users">3000+</span> monthly users!</p>
+              <div class="hero__images">
+                <img src="img/customer-1.jpg" alt="Customer Photo 1" />
+                <img src="img/customer-2.jpg" alt="Customer Photo 2" />
+                <img src="img/customer-3.jpg" alt="Customer Photo 3" />
+                <img src="img/customer-4.jpg" alt="Customer Photo 4" />
+                <img src="img/customer-5.jpg" alt="Customer Photo 5" />
+                <img src="img/customer-6.jpg" alt="Customer Photo 6" />
+              </div>
+              <p><span class="tag">3000+</span> monthly users!</p>
             </div>
             <div class="hero__icons">
-              <a class="btn btn--small btn--outline" href="#">
-                <img class="hero__icon" src="img/logo-apple.svg" />
-                <span>App Store</span>
-              </a>
-              <a
-                class="btn btn--small btn--outline hero__icon--play-store"
-                href="#"
+              <a class="btn btn--outline" href="#"
+                ><img
+                  class="hero__icon"
+                  src="img/logo-apple.svg"
+                  alt="App Store logo"
+                /><span>App Store</span></a
               >
-                <img class="hero__icon" src="img/logo-google-playstore.svg" />
-                <span>Play Store</span>
-              </a>
+
+              <a class="btn btn--outline" href="#"
+                ><img
+                  class="hero__icon"
+                  src="img/logo-google-playstore.svg"
+                  alt="Play Store logo"
+                /><span>Play Store</span></a
+              >
             </div>
           </div>
-          <div class="hero__img-box">
+
+          <div class="hero__img-container">
             <img class="hero__img" src="/img/hero-img.png" alt="" />
           </div>
         </div>
       </section>
 
-      <section id="how" class="section-how">
-        <div class="container center-text">
-          <h2 class="heading-secondary">How it works</h2>
-        </div>
-        <div class="container grid grid-col-3">
-          <div class="step-box-1">
-            <p class="step-number">01</p>
-            <h3 class="heading-tertiary">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
-              doloribus, natus reprehenderit reiciendis repudiandae cumque
-              aliquid, eaque obcaecati rerum perferendis laudantium similique
-              eum laboriosam, nulla blanditiis culpa nesciunt nisi nobis!
-            </h3>
-          </div>
-          <div class="step-box-2">
-            <div class="step-box-1">
-              <p class="step-number">02</p>
-              <h3 class="heading-tertiary">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Nostrum itaque sapiente, nulla voluptates voluptatem distinctio
-                quidem temporibus doloremque voluptate at natus, dicta molestiae
-                corporis repellendus aliquam inventore quia unde minus.
-              </h3>
+      <section id="step" class="step">
+        <div class="container">
+          <h2 class="heading-secondary | text-center">How it works</h2>
+          <div class="step__content flow">
+            <div class="step__box">
+              <p class="step__number">01</p>
+              <h3 class="heading-tertiary">Fill in the form below</h3>
+              <p class="step__description">
+                Enter your age, height and weight and select a goal to determine
+                how many daily calories should be consumed.
+              </p>
             </div>
-          </div>
-          <div class="step-box-3">
-            <div class="step-box-1">
-              <p class="step-number">03</p>
+            <div class="step__box">
+              <p class="step__number">02</p>
               <h3 class="heading-tertiary">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint
-                totam iure quasi saepe incidunt repellendus consequuntur,
-                dolorum exercitationem nam facere recusandae ad consectetur
-                placeat fugit rem eveniet nemo est doloremque?
+                Select your diet and the amount of meals
               </h3>
+              <p class="step__description">
+                We offer 4 types of diets. Choose one in order to get only
+                recipes linked to that diet. Select the amount of meals you want
+                to consume per day.
+              </p>
+            </div>
+            <div class="step__box">
+              <p class="step__number">03</p>
+              <h3 class="heading-tertiary">
+                Click the generate button and witness the magic
+              </h3>
+              <p class="step__description">
+                Watch the results below. Click on a recipe to view the details.
+                There is also a refresh button next to each recipe which will
+                generate a new recipe.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <dialog class="modal" method="dialog">
-        <div class="form__close flex-container flex-end">
-          <button class="close-modal btn btn--small btn--orange" type="button">
-            X
-          </button>
+      <dialog id="form-modal" method="dialog">
+        <div class="form__close">
+          <button class="close-modal btn btn--orange" type="button">X</button>
         </div>
-        <form id="form-data" action="" method="dialog"></form>
+        <form id="form-data" method="dialog">
+          <!-- Form will be inserted here-->
+        </form>
       </dialog>
 
-      <section id="stats" class="section-statistics">
-        <div class="cta container">
-          <div><img src="/img/arrow_256.png" /></div>
-          <a
-            id="create-mealplan"
-            class="btn btn--large btn--orange"
-            href="#stats"
-            >Fill in the form</a
-          >
+      <section class="statistics">
+        <div id="stats" class="container">
+          <div class="cta">
+            <div class="cta__arrow"><img src="/img/arrow_256.png" /></div>
+            <a
+              id="create-mealplan"
+              class="cta__button btn btn--orange"
+              href="#stats"
+              >Fill in the form</a
+            >
+          </div>
+
+          <div>
+            <div id="person-stats">
+              <!-- Diagram with stats will be displayed here -->
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div class="container grid grid__statistics">
-          <div id="person-stats" class="grid grid__data statistics"></div>
-
-          <div class="diet-container hidden">
-            <h4 class="heading-quaternary">Select your diet</h4>
-
+      <section class="diet-container | hidden">
+        <div class="row | container">
+          <div class="col | flow">
+            <p class="heading-tertiary">Select your diet</p>
             <div class="diet">
-              <div class="diet__all" data-diet="all">
-                <i class="diet__icon fa-solid fa-infinity"></i>
-                <button class="btn btn--small btn--outline">Anything</button>
+              <div class="diet__item" data-diet="all">
+                <button class="diet__button | btn btn--outline">
+                  <i class="diet__icon fa-solid fa-infinity"></i>
+                  <span>Anything</span>
+                </button>
               </div>
-              <div class="diet__vegan" data-diet="vegan">
-                <i class="diet__icon fa-solid fa-leaf"></i>
-                <button class="btn btn--small btn--outline">Vegan</button>
+              <div class="diet__item" data-diet="vegan">
+                <button class="diet__button | btn btn--outline">
+                  <i class="diet__icon fa-solid fa-leaf"></i><span>Vegan</span>
+                </button>
               </div>
-              <div class="diet__vegetarian" data-diet="vegetarian">
-                <i class="diet__icon fa-solid fa-seedling"></i>
-                <button class="btn btn--small btn--outline">Vegetarian</button>
+              <div class="diet__item" data-diet="vegetarian">
+                <button class="diet__button | btn btn--outline">
+                  <i class="diet__icon fa-solid fa-seedling"></i>
+                  <span>Vegetarian</span>
+                </button>
               </div>
-              <div class="diet__gluten-free" data-diet="gluten-free">
-                <i
-                  class="diet__icon fa-solid fa-wheat-awn-circle-exclamation"
-                ></i>
-                <button class="btn btn--small btn--outline">Gluten free</button>
+              <div class="diet__item" data-diet="gluten-free">
+                <button class="diet__button | btn btn--outline">
+                  <i
+                    class="diet__icon fa-solid fa-wheat-awn-circle-exclamation"
+                  ></i>
+                  <span>Gluten free</span>
+                </button>
               </div>
             </div>
-            <h4 class="heading-quaternary">How many meals do you want?</h4>
+          </div>
+          <div class="col | flow">
+            <p class="heading-tertiary">How many meals would you like?</p>
             <div class="diet__amountmeals">
               <select class="num-meals" name="num-meals" id="num-meals">
                 <option value="1">1 meal</option>
@@ -176,103 +193,48 @@
                 <option value="5">5 meals</option>
                 <option value="6">6 meals</option>
               </select>
-              <div>
-                <a
-                  id="diet-generate"
-                  class="btn btn--orange btn--cta"
-                  style="float: right"
-                >
-                  <span class="cta-text">Generate mealplan</span>
-                  <span class="cta-spinner"></span>
-                </a>
-              </div>
-              <div id="diet-error" class="diet--error"></div>
             </div>
+            <button id="diet-generate" class="diet__calculate btn btn--primary">
+              <span class="cta-text">Generate mealplan</span>
+              <span class="cta-spinner"></span>
+            </button>
+            <div id="diet-error" class="diet--error"></div>
           </div>
         </div>
       </section>
 
-      <section id="meals" class="section-meals">
-        <div class="meals-wrapper">
-          <div id="meals-container"></div>
-
-          <div id="meal-details" class="details">
-            <!-- <div class="details__image-container">
-              <img
-                class="details__img"
-                src="https://spoonacular.com/recipeImages/658509-556x370.jpg"
-                alt=""
-              />
-            </div>
-  
-            <div class="details__info">
-              <div class="details__info__item">
-                <i class="details__icon fa-solid fa-clock"></i>
-                <p>45 minutes</p>
-              </div>
-              <div class="details__info__item">
-                <i class="details__icon fa-solid fa-utensils"></i>
-                <p>4 servings</p>
-              </div>
-            </div>
-  
-            <div class="details__ingredients-all">
-              <div class="details__ingredient"">
-                <div class="details__ingredient__image-container">
-                  <img
-                    class="details__img"
-                    src="https://spoonacular.com/cdn/ingredients_100x100/bell-pepper-orange.png"
-                    alt="apple"
-                  />
-                </div>
-                <div class="details__ingredient__description">fresh green beans</div>
-                <div class="details__ingredient__unit">2 pounds</div>
-              </div>
-            </div>
-  
-            <div class="details__nutrients">
-              <div class="details__nutrients__item">
-                <div class="details__nutrients__name">Calories</div>
-                <div class="details__nutrients__values">550g</div>
-              </div>
-              <div class="details__nutrients__item">
-                <div class="details__nutrients__name">Carbs</div>
-                <div class="details__nutrients__values">550g</div>
-              </div>
-              <div class="details__nutrients__item">
-                <div class="details__nutrients__name">Protein</div>
-                <div class="details__nutrients__values">550g</div>
-              </div>
-              <div class="details__nutrients__item">
-                <div class="details__nutrients__name">Fat</div>
-                <div class="details__nutrients__values">550g</div>
-              </div>
-            </div>
-  
-            <div class="details__instructions">
-              <ol>
-                <li class="details__instructions__item">
-                  In a large pan with lid heat olive oil over medium high heat.
-                  Add onions and cook for 1 minute. Add garlic and cook until
-                  onions are translucent and garlic is fragrant.
-                </li>
-                <li class="details__instructions__item">
-                  Add quinoa to pan, stir to combine. Slowly add in broth and
-                  bring to a boil.
-                </li>
-                <li class="details__instructions__item">Cover and reduce heat to low, cook for 15 minutes.</li>
-                <li class="details__instructions__item">
-                  In the last 2-3 minutes of cooking add in broccolini on top of
-                  the quinoa (do not stir) and cover.
-                </li>
-                <li class="details__instructions__item">Uncover and toss broccolini and quinoa together.</li>
-                <li class="details__instructions__item">Season to taste with salt and pepper.</li>
-                <li class="details__instructions__item">Add walnuts and serve hot.</li>
-              </ol>
-            </div> -->
-          </div>
-        </div>
+      <section id="meals" class="section-meals | hidden">
+        <div id="meals-container" class="meals | container"></div>
       </section>
+
+      <dialog id="meal-details" class="details" method="dialog">
+        <!-- meal details will be displayed here -->
+      </dialog>
     </main>
+
+    <footer class="footer">
+      <div class="footer__copy">
+        &copy; Made with
+        <i class="footer__icon fa fa-heart" aria-hidden="true"></i> By
+        Nicolas-V93
+      </div>
+      <nav class="footer__icons">
+        <a href="https://github.com/Nicolas-V93"
+          ><i class="footer__icon fa fa-github" aria-hidden="true"></i
+        ></a>
+        <a href="#"
+          ><i
+            class="footer__icon fa fa-facebook-official"
+            aria-hidden="true"
+          ></i
+        ></a>
+        <a href="#"
+          ><i class="footer__icon fa fa-instagram" aria-hidden="true"></i
+        ></a>
+        <a href="#"
+          ><i class="footer__icon fa fa-linkedin" aria-hidden="true"></i
+        ></a>
+      </nav>
+    </footer>
   </body>
 </html>

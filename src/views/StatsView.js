@@ -68,24 +68,27 @@ class StatsView {
 
   #generateMarkup(data) {
     return `
-  <div class="statistics__img-box">
-      <canvas id="macroChart" width="400" height="400">
-      </canvas>
-  </div>
-  <div class="statistics__text-box">
-    <div>
-      <h3 class="heading-tertiary">Basal Metabolic Rate (BMR)</h3>
-      <p class="statistics__data">${data.bmr}</p>
+  <h2 class="heading-secondary | text-center">Statistics</h2>
+  <div class="statistics__data">
+    <div class="statistics__img-box">
+        <canvas id="macroChart" width="400" height="400">
+        </canvas>
     </div>
-    <div>
-      <h3 class="heading-tertiary">
-                  Total Daily Energy Expenditure (TDEE)
-                </h3>
-      <p class="statistics__data">${data.tdee}</p>
-    </div>
-    <div>
-      <h3 class="heading-tertiary">Daily calories based on goal</h3>
-      <p class="statistics__data">${data.goalTDEE}</p>
+    <div class="statistics__content flow">
+      <div>
+        <p class="heading-quaternary">Basal Metabolic Rate (BMR)</p>
+        <p class="statistics__data">${data.bmr}</p>
+      </div>
+      <div>
+        <p class="heading-quaternary">
+                    Total Daily Energy Expenditure (TDEE)
+                  </p>
+        <p class="statistics__data">${data.tdee}</p>
+      </div>
+      <div>
+        <p class="heading-quaternary">Daily calories based on goal</p>
+        <p class="statistics__data">${data.goalTDEE}</p>
+      </div>
     </div>
   </div>
 `;

@@ -1,10 +1,13 @@
-class FormView {
-  #modal = document.querySelector('.modal');
+import Modal from './modal.js';
+
+class FormView extends Modal {
+  #parentElement = document.querySelector('#form-modal');
   #form = document.querySelector('#form-data');
   #btnCreate = document.querySelector('#create-mealplan');
 
   constructor() {
-    this.#addHandlerShowForm();
+    super();
+    this.#btnCreate.addEventListener('click', this.#renderForm.bind(this));
   }
 
   addHandlerProcessInfo(handler) {
@@ -21,43 +24,17 @@ class FormView {
     errorDiv.textContent = message;
   }
 
-  closeModal() {
-    this.#modal.close();
-  }
-
   hideCta() {
     document.querySelector('.cta').style.display = 'none';
   }
 
-  #clear() {
-    this.#form.innerHTML = '';
+  closeModal() {
+    this.#parentElement.close();
   }
 
   #toggleUnit() {
     this.#form.dataset.unit =
       this.#form.dataset.unit === 'imperial' ? 'metric' : 'imperial';
-  }
-
-  #addHandlerShowForm() {
-    this.#btnCreate.addEventListener('click', e => {
-      this.#renderForm();
-      this.#modal.showModal();
-    });
-  }
-
-  #addHandlerHideModal() {
-    document
-      .querySelector('.close-modal')
-      .addEventListener('click', () => this.closeModal());
-  }
-
-  #addHandlerUnit() {
-    document
-      .querySelector('.switch-button-checkbox')
-      .addEventListener('click', () => {
-        this.#toggleUnit();
-        this.#renderForm();
-      });
   }
 
   #renderForm() {
@@ -67,16 +44,26 @@ class FormView {
     this.#form.dataset.unit = unit;
     const markup = this.#generateMarkup(unit);
     this.#form.insertAdjacentHTML('afterbegin', markup);
-
     this.#addHandlerUnit();
-    this.#addHandlerHideModal();
+
+    if (!this.#parentElement.hasAttribute('open')) {
+      const modal = new Modal(this.#parentElement);
+      modal.openModal();
+      modal.addHandlerCloseModal();
+    }
   }
 
   #generateMarkup(unit) {
     return `
   <section class="form">
-      <div class="form__description center-text">
-        Fill in the form to calculate data
+      <div class="form__description text-center">
+        Fill in the form to calculate needed calories/day        
+      </div>
+
+      <div class="form__info">
+      <i class="form__icon fa fa-info-circle" aria-hidden="true"></i>
+        This calculator uses a standard BMR equation (the Harris-Benedict Formula) to estimate your calorie needs.
+        Keep in mind that this is a general estimate. For best results, consult your healthcare provider.
       </div>
 
       <div class="form__units flex-container flex-center">
@@ -92,7 +79,7 @@ class FormView {
 
       <div class="form__error flex-container flex-center"></div>
 
-      <div class="grid grid-col-2">
+      <div>
         <div class="form__age">
           <label class="form__label" for="age">Age</label>
           <input
@@ -175,12 +162,25 @@ class FormView {
       </div>
 
       <div class="flex-container flex-center">
-        <button type="submit" class="btn btn--large btn--full btn--submit">
+        <button type="submit" class="btn btn--primary btn--submit">
           Calculate
         </button>
       </div>
     </section>
   `;
+  }
+
+  #addHandlerUnit() {
+    document
+      .querySelector('.switch-button-checkbox')
+      .addEventListener('click', () => {
+        this.#toggleUnit();
+        this.#renderForm();
+      });
+  }
+
+  #clear() {
+    this.#form.innerHTML = '';
   }
 }
 

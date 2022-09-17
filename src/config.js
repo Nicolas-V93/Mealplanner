@@ -10,7 +10,7 @@ export const LBS_FACTOR = 2.2046;
 export const FEET_TO_INCH_MULTIPLIER = 12;
 export const INCH_FACTOR = 2.54;
 
-export const API_KEY = '';
+export const API_KEY = '<ENTER YOUR API HERE>';
 
 export const MAX_SERVING = 99;
 export const MAX_MEALS = 6;

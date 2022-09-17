@@ -35,10 +35,6 @@ export const getMeals = async function (dietData, goalTDEE) {
       const obj = createMealObject(meal, dishType);
       state.results.push(obj);
     });
-
-    console.log(state.results);
-
-    // calculateNutritionDataPerMeal(goalTDEE);
   } catch (err) {
     console.error(`${err} 💥💥💥💥`);
   }
@@ -125,7 +121,7 @@ function createMealObject(meal, dishType) {
   const carbs = meal.nutrition.nutrients.find(n => n.name === 'Carbohydrates');
   const protein = meal.nutrition.nutrients.find(n => n.name === 'Protein');
 
-  const obj = {
+  return {
     id: meal.id,
     dishType,
     title: meal.title,
@@ -161,8 +157,6 @@ function createMealObject(meal, dishType) {
     extendedIngredients: meal.extendedIngredients,
     instructions: meal.instructions,
   };
-
-  return obj;
 }
 
 const getRandomRecipes = async function (amount, dishType) {

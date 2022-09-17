@@ -55,7 +55,7 @@ class DietView {
     const textEl = document.querySelector('.cta-text');
     textEl.style.display = 'inline-block';
     textEl.style.transform = 'translateX(-15px)';
-    textEl.style.transition = 'all 0.4s';
+    textEl.style.transition = 'all 0.2s';
 
     const target = document.querySelector('.cta-spinner');
     this.#spinner = new Spinner(opts).spin(target);

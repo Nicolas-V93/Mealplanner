@@ -106,11 +106,3 @@ class Person {
 }
 
 export default new Person();
-
-// Harris-Benedict Formula
-
-// <!-- Men:
-// BMR = 66.5 + (13.75 × weight [kg]) + (5.003 × height [cm]) – (6.775 × age [years])
-
-// Women:
-// BMR = 655.1 + (9.563 × weight [kg]) + (1.850 × height [cm]) – (4.676 × age [years]) -->

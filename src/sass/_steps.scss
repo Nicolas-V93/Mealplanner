@@ -1,13 +1,22 @@
 @use 'variables' as *;
 @use 'components' as *;
 
-.section-how {
-  padding: $space-3;
+.step {
   background-color: $color-background-secondary;
-}
+  padding: $section-gap 0;
 
-.step-number {
-  font-size: 8.6rem;
-  font-weight: 900;
-  color: $color-grey-light;
+  &__number {
+    font-size: 4.5rem;
+    font-weight: 900;
+    color: $color-grey-light;
+  }
+
+  &__description {
+    margin-top: 1em;
+    color: $color-grey-light;
+  }
+
+  &__content {
+    --flow-space: 2em;
+  }
 }

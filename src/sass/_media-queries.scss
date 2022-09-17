@@ -1,0 +1,99 @@
+@use 'variables' as *;
+
+@media screen and (min-width: 600px) {
+  .hero {
+    &__img-container {
+      max-width: 75%;
+    }
+  }
+
+  .step {
+    &__content {
+      display: grid;
+      gap: 3rem;
+      --flow-space: 0;
+    }
+  }
+
+  .statistics {
+    &__data {
+      display: grid;
+      gap: 5rem;
+      grid-template-columns: 35% 50%;
+      align-items: center;
+    }
+
+    &__img-box {
+      padding: 0;
+    }
+  }
+
+  .diet {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    &__item {
+      flex-basis: 45%;
+    }
+  }
+
+  .meals {
+    grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  }
+}
+
+@media screen and (min-width: 880px) {
+  .section-hero {
+    padding-bottom: $section-gap;
+  }
+
+  .hero {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+
+    &__img-container {
+      max-width: 100%;
+    }
+
+    &__icons {
+      --flow-space: 8em;
+    }
+  }
+
+  .step {
+    &__content {
+      height: 100%;
+
+      gap: 0;
+      column-gap: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+    }
+
+    &__box {
+      display: grid;
+      grid-template-rows: 110px 160px 160px;
+    }
+
+    &__description {
+      margin-top: 0;
+    }
+  }
+
+  .cta {
+    justify-content: center;
+  }
+
+  .row {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: 60% 30%;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  body {
+    font-size: 1.35rem;
+  }
+}

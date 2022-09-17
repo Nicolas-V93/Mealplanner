@@ -1,44 +1,47 @@
 @use 'variables' as *;
 
-.diet-container > h4:nth-of-type(2) {
-  margin-top: $space-3;
-}
-
-.diet__icon {
-  color: #65a30d;
-  font-size: 4.4rem;
-  margin-bottom: 4rem;
+.diet-container {
+  padding: 2em 0;
+  background-color: $color-background-primary;
 }
 
 .diet {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
-}
-
-.diet__all,
-.diet__vegetarian,
-.diet__vegan,
-.diet__gluten-free {
+  max-width: 90%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 0.3rem;
+  margin-bottom: 5em;
+
+  &__icon {
+    color: $color-primary;
+    width: 32px;
+    height: 32px;
+    font-size: 2rem;
+  }
+
+  &__button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  &__calculate {
+    margin-top: 3em;
+  }
 }
 
-// .diet__amountmeals {
-//   display: flex;
-//   margin-top: $space-0;
-// }
-
 // toggle class when selecting a diet
-.diet--selected {
-  background-color: $color-accent;
-  border-radius: 60%;
+.diet--selected > button {
+  background-color: $color-accent-dark;
 }
 
 .diet--error {
-  margin-bottom: 3.2rem;
-  font-size: $font-text-small;
-  font-weight: 700;
   color: rgb(233, 1, 1);
+  font-weight: 700;
+}
+
+.cta-spinner {
+  position: relative;
 }

@@ -1,45 +1,24 @@
 @use 'variables' as *;
 @use 'components' as *;
 
-.section-statistics {
-  background: $color-background;
-  // background-image: url('../../img/arrow.png');
-  background-repeat: no-repeat;
-  padding: $space-3;
-}
+.statistics {
+  background: $color-background-primary;
+  padding: $section-gap 0;
 
-.grid__statistics {
-  grid-template-columns: 70% 30%;
-}
+  &__img-box {
+    max-width: 30rem;
+  }
 
-.grid__data {
-  grid-template-columns: 40% 60%;
-  gap: 3rem;
-}
-
-.statistics__data {
-  font-size: $font-text-small;
-}
-
-.statistics__text-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 3rem;
-}
-
-.statistics__img-box {
-  // position: relative;
-  max-width: 30rem;
-  //   margin: 4.8rem;
+  &__content {
+    margin-top: 2.5em;
+  }
 }
 
 .cta {
   display: flex;
-  align-items: flex-end;
-  gap: 2rem;
+  gap: 1rem;
 
-  &__text {
-    font-size: $font-heading-secondary;
+  &__button {
+    align-self: flex-end;
   }
 }
