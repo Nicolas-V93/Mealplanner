@@ -28,6 +28,10 @@
   }
 
   &__icon:hover {
+    color: $color-primary;
+  }
+
+  &__copy &__icon:hover {
     color: red;
   }
 }
