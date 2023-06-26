@@ -58,7 +58,9 @@ Made with vanilla JavaScript.
  ```sh
    git clone https://github.com/Nicolas-V93/Mealplanner.git
    ```
-3. Inside the src folder, go to the config.js file. Enter your API key on the API_KEY variable.
+3. Run ```npm install```
+4. Inside the src folder, go to the config.js file. Enter your API key on the API_KEY variable.
+5. Run ```npm start```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
